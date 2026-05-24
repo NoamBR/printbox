@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+.env*.local
+quotes.json
+.DS_Store
+
+# Operational / PII — keep local only
+prospects/

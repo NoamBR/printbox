@@ -1,0 +1,72 @@
+{
+  "brand": "PrintBox / פרינטבוקס",
+  "catalog_version": "1.0.0",
+  "extracted_from": "Burger packaging suite reference image (composite, 2026-05-24)",
+  "items_count": 8,
+  "items": [
+    {
+      "product_id": "PB-001",
+      "title_he": "קופסת המבורגר צדפה (Clamshell) – נייר מצופה",
+      "title_en": "Coated Paperboard Burger Clamshell Box",
+      "category": "Food Packaging / Burger Boxes",
+      "image_url_clean": "renders/PB-001_clean.png",
+      "image_url_branded_premium": "renders/PB-001_branded.png"
+    },
+    {
+      "product_id": "PB-002",
+      "title_he": "קופסת המבורגר קראפט גלי – פתיחה מלמעלה",
+      "title_en": "Corrugated Kraft Burger Box – Hinged Top",
+      "category": "Food Packaging / Burger Boxes",
+      "image_url_clean": "renders/PB-002_clean.png",
+      "image_url_branded_premium": "renders/PB-002_branded.png"
+    },
+    {
+      "product_id": "PB-003",
+      "title_he": "כוס משקה קר מנייר 16oz עם מכסה כיפה",
+      "title_en": "16oz Paper Cold Cup with PET Dome Lid",
+      "category": "Beverage Packaging / Cold Cups",
+      "image_url_clean": "renders/PB-003_clean.png",
+      "image_url_branded_premium": "renders/PB-003_branded.png"
+    },
+    {
+      "product_id": "PB-004",
+      "title_he": "שקית נשיאה גדולה מנייר עם ידיות שטוחות (SOS)",
+      "title_en": "Large SOS Paper Carrier Bag with Flat Paper Handles",
+      "category": "Takeaway Bags / SOS Paper Bags",
+      "image_url_clean": "renders/PB-004_clean.png",
+      "image_url_branded_premium": "renders/PB-004_branded.png"
+    },
+    {
+      "product_id": "PB-005",
+      "title_he": "קופסת ארוחה מרובעת – בסיס וכיסוי נפרד",
+      "title_en": "Two-Piece Square Meal Box (Base + Lid)",
+      "category": "Food Packaging / Meal Boxes",
+      "image_url_clean": "renders/PB-005_clean.png",
+      "image_url_branded_premium": "renders/PB-005_branded.png"
+    },
+    {
+      "product_id": "PB-006",
+      "title_he": "כוס/סקופ צ'יפס מנייר – מידה M",
+      "title_en": "Paper Fries Scoop / Snack Cup – Medium",
+      "category": "Food Packaging / Fries & Snack Cups",
+      "image_url_clean": "renders/PB-006_clean.png",
+      "image_url_branded_premium": "renders/PB-006_branded.png"
+    },
+    {
+      "product_id": "PB-007",
+      "title_he": "מפיות נייר ממותגות – הדפסה צבעונית",
+      "title_en": "Branded Printed Paper Napkins",
+      "category": "Tabletop & Accessories / Printed Napkins",
+      "image_url_clean": "renders/PB-007_clean.png",
+      "image_url_branded_premium": "renders/PB-007_branded.png"
+    },
+    {
+      "product_id": "PB-008",
+      "title_he": "כרטיסי ביקור – הדפסה דו-צדדית פרימיום",
+      "title_en": "Premium Double-Sided Business Cards",
+      "category": "Brand Print / Business Cards",
+      "image_url_clean": "renders/PB-008_clean.png",
+      "image_url_branded_premium": "renders/PB-008_branded.png"
+    }
+  ]
+}

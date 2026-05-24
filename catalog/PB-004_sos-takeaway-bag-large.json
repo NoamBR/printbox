@@ -1,0 +1,22 @@
+{
+  "product_id": "PB-004",
+  "sku": "SOS-BAG-LARGE-FLAT-HANDLE",
+  "category": "Takeaway Bags / SOS Paper Bags",
+  "title_he": "שקית נשיאה גדולה מנייר עם ידיות שטוחות (SOS)",
+  "title_en": "Large SOS Paper Carrier Bag with Flat Paper Handles",
+  "description_he": "שקית נשיאה איכותית בגודל גדול בעיצוב SOS עם תחתית שטוחה וידיות שטוחות מנייר מודבק, נושאת בנוחות הזמנות משפחתיות וכוללת שטח הדפסה רחב משני הצדדים. מיוצרת מנייר קראפט חזק ויציב — כלי מיתוג מהלך-רגליים שמעצים את החשיפה של המסעדה בכל משלוח טייק-אווי.",
+  "description_en": "Heavy-duty large-format SOS carrier bag with flat bottom and glued flat paper handles, engineered to hold family-size orders. Manufactured from rigid kraft paper with expansive print surfaces on both faces — a walking billboard that amplifies the brand on every takeaway run.",
+  "specs": {
+    "material": "Virgin/recycled kraft paper, 100–120 GSM",
+    "construction": "SOS flat-bottom, glued flat paper handles, reinforced top fold",
+    "approx_dimensions_mm": "320 x 200 x 380 (W x D x H)",
+    "load_capacity_kg": 6,
+    "color_options": "Natural kraft / white kraft / full-color print / foil",
+    "print_areas": "Front, back, side gussets",
+    "eco_certified": "FSC available on request",
+    "moq_units": 500
+  },
+  "image_url_clean": "renders/PB-004_clean.png",
+  "image_url_branded_premium": "renders/PB-004_branded.png",
+  "tags": ["paper bag", "SOS bag", "takeaway", "carrier bag", "שקית נייר", "שקית נשיאה", "טייק-אווי"]
+}

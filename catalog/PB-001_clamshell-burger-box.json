@@ -1,0 +1,21 @@
+{
+  "product_id": "PB-001",
+  "sku": "CLAMSHELL-BURGER-STD",
+  "category": "Food Packaging / Burger Boxes",
+  "title_he": "קופסת המבורגר צדפה (Clamshell) – נייר מצופה",
+  "title_en": "Coated Paperboard Burger Clamshell Box",
+  "description_he": "קופסת המבורגר בעיצוב צדפה (Clamshell) המעניקה אריזה איכותית, יציבה ושומרת חום למסעדות בורגר ופוד-טראקים מובילים. מיוצרת מקרטון מצופה איכותי המאפשר הדפסה מלאה בצבע מלא או הטבעות פויל בסטנדרט פרימיום שמרומם את חוויית המותג של הלקוח.",
+  "description_en": "Hinged clamshell burger box delivering premium presentation, structural rigidity and heat retention for high-end burger concepts and food trucks. Coated paperboard accepts full-color CMYK print plus foil stamping, transforming standard takeaway into a branded brand-experience moment.",
+  "specs": {
+    "material": "Coated/Laminated Paperboard (350–400 GSM)",
+    "construction": "One-piece hinged clamshell, snap-lock closure",
+    "approx_dimensions_mm": "120 x 120 x 80 (W x D x H)",
+    "color_options": "Stock white/kraft; full CMYK print; spot UV; gold/silver foil stamp",
+    "capacity": "Single classic burger (Ø 110 mm)",
+    "food_safe": true,
+    "moq_units": 1000
+  },
+  "image_url_clean": "renders/PB-001_clean.png",
+  "image_url_branded_premium": "renders/PB-001_branded.png",
+  "tags": ["burger box", "clamshell", "takeaway", "B2B", "מסעדה", "פוד-טראק", "קופסת המבורגר"]
+}

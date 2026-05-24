@@ -1,0 +1,22 @@
+{
+  "product_id": "PB-003",
+  "sku": "COLD-CUP-16OZ-DOME",
+  "category": "Beverage Packaging / Cold Cups",
+  "title_he": "כוס משקה קר מנייר 16oz עם מכסה כיפה",
+  "title_en": "16oz Paper Cold Cup with PET Dome Lid",
+  "description_he": "כוס משקה קר מנייר איכותי בנפח 473 מ\"ל, מצופה PE לעמידות מקסימלית ברטיבות וקרח, יחד עם מכסה כיפה שקוף (Dome) המתאים למילקשייקים, סמוזי ושייקים. המעטפת מציעה שטח הדפסה 360° מלא, ובשילוב פויל זהב או הדפסה מאט מעניקה ללקוחות שלך מותג שמדבר מהמעמד הראשון.",
+  "description_en": "Premium 16 oz (473 ml) paper cold-drink cup, PE-coated for maximum moisture and ice resistance, paired with a clear PET dome lid suited for milkshakes, smoothies and frappés. Full 360° print canopy supports rich CMYK + foil-stamp applications that elevate the brand at first glance.",
+  "specs": {
+    "material": "Single-wall PE-coated paperboard, ~280 GSM",
+    "volume_ml": 473,
+    "volume_oz": 16,
+    "approx_dimensions_mm": "Ø90 top × Ø60 base × 150 H",
+    "lid": "Clear PET dome lid with cross-cut straw slot",
+    "straw_compatibility": "Paper or PLA straws",
+    "color_options": "Stock white; full CMYK; matte/gloss finish; foil stamping",
+    "moq_units": 1000
+  },
+  "image_url_clean": "renders/PB-003_clean.png",
+  "image_url_branded_premium": "renders/PB-003_branded.png",
+  "tags": ["cold cup", "paper cup", "dome lid", "milkshake", "כוס נייר", "משקה קר", "מילקשייק"]
+}

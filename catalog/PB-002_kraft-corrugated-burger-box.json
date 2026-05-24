@@ -1,0 +1,22 @@
+{
+  "product_id": "PB-002",
+  "sku": "KRAFT-BURGER-CORRUGATED",
+  "category": "Food Packaging / Burger Boxes",
+  "title_he": "קופסת המבורגר קראפט גלי – פתיחה מלמעלה",
+  "title_en": "Corrugated Kraft Burger Box – Hinged Top",
+  "description_he": "קופסת המבורגר מקרטון גלי קראפט עם מבנה מחוזק ופתיחה מלמעלה, המספקת בידוד תרמי מעולה ותחושת אומנותיות (artisan) לקונספטים של בורגר גורמה. שטח הדפסה רחב על המכסה והדפנות מאפשר מיתוג מלא, כולל הדפסה צבעונית, חיתוך מדויק וכיתוב בפויל זהב לחוויה פרימיום.",
+  "description_en": "Corrugated kraft burger box with reinforced fluted walls and top-hinge opening — delivers superior thermal insulation and an artisan, gourmet aesthetic. Generous print real-estate across lid and sides supports full-color printing, die-cut detailing and gold-foil stamping for a premium unboxing moment.",
+  "specs": {
+    "material": "B-Flute Corrugated Kraft Board (~3 mm)",
+    "construction": "Single-piece die-cut, hinged top with tuck-tab lock",
+    "approx_dimensions_mm": "140 x 140 x 90 (W x D x H)",
+    "color_options": "Natural kraft; 1–4 color flexo print; foil stamp; debossing",
+    "capacity": "Premium/double burger + small side",
+    "food_safe": true,
+    "grease_resistant_liner": "Optional",
+    "moq_units": 500
+  },
+  "image_url_clean": "renders/PB-002_clean.png",
+  "image_url_branded_premium": "renders/PB-002_branded.png",
+  "tags": ["kraft box", "corrugated", "burger box", "gourmet", "artisan", "קראפט", "קרטון גלי"]
+}

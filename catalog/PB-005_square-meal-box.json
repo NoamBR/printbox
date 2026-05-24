@@ -1,0 +1,21 @@
+{
+  "product_id": "PB-005",
+  "sku": "MEAL-BOX-SQUARE-LID",
+  "category": "Food Packaging / Meal Boxes",
+  "title_he": "קופסת ארוחה מרובעת – בסיס וכיסוי נפרד",
+  "title_en": "Two-Piece Square Meal Box (Base + Lid)",
+  "description_he": "קופסת ארוחה מרובעת בעיצוב שתי-חלקים: בסיס עמוק וכיסוי מותאם, אידיאלית לארוחות קומבו, מנות שף או מארזים תפעוליים לעסקים. הקופסה מאפשרת שטחי מיתוג גדולים על המכסה ועל הדפנות ועומדת בעומסים תפעוליים של משלוחי דליברי דחוסים.",
+  "description_en": "Two-piece square meal box (deep base with matching lid) optimized for combo meals, chef-curated boxed lunches and B2B catering programs. Generous lid + side print real-estate plus stack-safe walls for high-throughput delivery operations.",
+  "specs": {
+    "material": "Coated kraft paperboard, 350 GSM",
+    "construction": "Two-piece (separate base + telescoping lid)",
+    "approx_dimensions_mm": "180 x 180 x 75 (W x D x H)",
+    "stackable": true,
+    "color_options": "Natural kraft / white interior / full-color top panel / foil stamp",
+    "food_safe_liner": "Grease-resistant PE / PLA bio-coating optional",
+    "moq_units": 500
+  },
+  "image_url_clean": "renders/PB-005_clean.png",
+  "image_url_branded_premium": "renders/PB-005_branded.png",
+  "tags": ["meal box", "lunch box", "kraft box", "catering", "קופסת ארוחה", "מנת שף", "קייטרינג"]
+}

@@ -1,0 +1,21 @@
+{
+  "product_id": "PB-006",
+  "sku": "FRIES-SCOOP-MEDIUM",
+  "category": "Food Packaging / Fries & Snack Cups",
+  "title_he": "כוס/סקופ צ'יפס מנייר – מידה M",
+  "title_en": "Paper Fries Scoop / Snack Cup – Medium",
+  "description_he": "כוס סקופ ייעודית לצ'יפס וחטיפים, מעוצבת בפתח רחב המאפשר אחיזה נוחה והגשה אטרקטיבית. מיוצרת מנייר מצופה עמיד לשומן, כשמשטח ההדפסה המוגבה מאפשר חוויית מיתוג חזותית בולטת ובלתי-נשכחת על המגש או בקופסת הקומבו.",
+  "description_en": "Dedicated fries/snack scoop cup with a wide opening for easy grab-and-serve presentation. Grease-resistant coated paper with an elevated print surface that pops visually on the tray or inside a combo box — turning the fries into a branded micro-billboard.",
+  "specs": {
+    "material": "Grease-resistant coated paper, ~280 GSM",
+    "construction": "Single-piece folded scoop with flat base",
+    "approx_dimensions_mm": "110 × 70 base, 130 H, tapered open top",
+    "capacity_g": 150,
+    "color_options": "White / kraft / full CMYK / foil",
+    "food_safe": true,
+    "moq_units": 1000
+  },
+  "image_url_clean": "renders/PB-006_clean.png",
+  "image_url_branded_premium": "renders/PB-006_branded.png",
+  "tags": ["fries cup", "snack cup", "scoop", "צ'יפס", "כוס נייר", "חטיף"]
+}

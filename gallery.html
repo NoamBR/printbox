@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PrintBox — Catalog v1.0 Gallery</title>
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --line: #2a2a2a;
+    --gold: #c9a55a;
+    --gold-bright: #e6c87a;
+    --text: #f4f1ea;
+    --text-dim: #9a958c;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  header {
+    padding: 64px 48px 48px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .brand-dot {
+    width: 14px; height: 14px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 24px rgba(201,165,90,0.6);
+  }
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: 42px;
+    letter-spacing: 0.02em;
+  }
+  h1 span { color: var(--gold); font-style: italic; }
+  .subtitle {
+    color: var(--text-dim);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+  .meta b { color: var(--gold); font-weight: 500; }
+  main { padding: 48px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 32px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .card:hover { border-color: var(--gold); transform: translateY(-2px); }
+  .card-head {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .pid {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    background: rgba(201,165,90,0.08);
+    padding: 4px 10px;
+    border: 1px solid rgba(201,165,90,0.2);
+    border-radius: 2px;
+  }
+  .title-he {
+    font-size: 17px;
+    font-weight: 500;
+    text-align: right;
+    direction: rtl;
+    line-height: 1.4;
+    flex: 1;
+  }
+  .title-en {
+    font-size: 12px;
+    color: var(--text-dim);
+    margin-top: 4px;
+    text-align: right;
+    direction: ltr;
+  }
+  .pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+  }
+  .pane {
+    background: var(--surface-2);
+    aspect-ratio: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pane img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pane.clean { background: #f4f1ea; }
+  .pane .ph {
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 16px;
+  }
+  .pane.clean .ph { color: #888; }
+  .label {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    background: rgba(0,0,0,0.7);
+    color: var(--gold);
+    border: 1px solid rgba(201,165,90,0.3);
+    backdrop-filter: blur(4px);
+    z-index: 2;
+  }
+  .pane.clean .label {
+    background: rgba(255,255,255,0.9);
+    color: #4a3a18;
+    border-color: rgba(201,165,90,0.4);
+  }
+  .card-body {
+    padding: 20px 24px 24px;
+    direction: rtl;
+    text-align: right;
+  }
+  .description {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #c8c4bb;
+  }
+  .specs {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    direction: ltr;
+    justify-content: flex-end;
+  }
+  .spec-chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    background: var(--bg);
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+  }
+  .spec-chip b { color: var(--text); font-weight: 500; }
+  footer {
+    padding: 48px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  footer b { color: var(--gold); font-weight: 500; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="brand-mark">
+      <div class="brand-dot"></div>
+      <h1>PrintBox <span>Catalog</span></h1>
+    </div>
+    <div class="subtitle">פרינטבוקס · Premium B2B Packaging Suite · v1.0</div>
+  </div>
+  <div class="meta">
+    Generated <b>2026-05-24</b><br>
+    Model · <b>Gemini Nano Banana Pro</b><br>
+    8 SKUs · 16 Renders
+  </div>
+</header>
+
+<main>
+  <div class="grid" id="grid">
+    <!-- Cards injected by JS -->
+  </div>
+</main>
+
+<footer>
+  PrintBox &middot; Catalog Engine &middot; <b>Matte Black + Polished Gold Foil</b>
+</footer>
+
+<script>
+const items = [
+  {
+    id: "PB-001",
+    title_he: "קופסת המבורגר צדפה (Clamshell)",
+    title_en: "Coated Paperboard Burger Clamshell",
+    desc_he: "קופסת המבורגר בעיצוב צדפה המעניקה אריזה איכותית, יציבה ושומרת חום. מיוצרת מקרטון מצופה ומאפשרת הדפסה מלאה והטבעות פויל לפרימיום.",
+    chips: ["350 GSM", "120×120×80mm", "MOQ 1000", "Foil/UV"]
+  },
+  {
+    id: "PB-002",
+    title_he: "קופסת המבורגר קראפט גלי",
+    title_en: "Corrugated Kraft Burger Box",
+    desc_he: "קופסת קרטון גלי קראפט עם מבנה מחוזק ופתיחה מלמעלה. בידוד תרמי מעולה ושטח הדפסה רחב לקונספטים של בורגר גורמה.",
+    chips: ["B-Flute Kraft", "140×140×90mm", "MOQ 500", "Deboss"]
+  },
+  {
+    id: "PB-003",
+    title_he: "כוס משקה קר 16oz + מכסה כיפה",
+    title_en: "16oz Paper Cold Cup + PET Dome Lid",
+    desc_he: "כוס נייר 473 מ\"ל מצופה PE לעמידות מקסימלית, עם מכסה כיפה למילקשייקים וסמוזי. שטח הדפסה 360° מלא.",
+    chips: ["473ml / 16oz", "PE Coated", "MOQ 1000", "Dome Lid"]
+  },
+  {
+    id: "PB-004",
+    title_he: "שקית נשיאה גדולה (SOS)",
+    title_en: "Large SOS Carrier Bag",
+    desc_he: "שקית נשיאה גדולה עם תחתית שטוחה וידיות שטוחות מנייר. כלי מיתוג מהלך-רגליים שמעצים את החשיפה של המסעדה.",
+    chips: ["320×200×380mm", "100-120 GSM", "6kg Load", "FSC Avail."]
+  },
+  {
+    id: "PB-005",
+    title_he: "קופסת ארוחה מרובעת",
+    title_en: "Two-Piece Square Meal Box",
+    desc_he: "קופסת ארוחה דו-חלקית בסיס וכיסוי נפרד. אידיאלית לקומבו, מנות שף וקייטרינג עסקי.",
+    chips: ["180×180×75mm", "350 GSM", "MOQ 500", "Stackable"]
+  },
+  {
+    id: "PB-006",
+    title_he: "כוס/סקופ צ'יפס",
+    title_en: "Paper Fries Scoop",
+    desc_he: "כוס סקופ ייעודית לצ'יפס וחטיפים, פתח רחב להגשה אטרקטיבית. נייר עמיד שומן ומיתוג חזותי בולט.",
+    chips: ["110×70×130mm", "Grease-Res.", "150g Cap.", "MOQ 1000"]
+  },
+  {
+    id: "PB-007",
+    title_he: "מפיות נייר ממותגות",
+    title_en: "Branded Printed Napkins",
+    desc_he: "מפיות 2-שכבות בהדפסת לוגו צבעונית. גוונים מותאמים, גימור מאט/מבריק והטבעות פויל לאקסטרה פרימיום.",
+    chips: ["330×330mm", "2-ply", "Quarter-fold", "MOQ 5000"]
+  },
+  {
+    id: "PB-008",
+    title_he: "כרטיסי ביקור פרימיום",
+    title_en: "Premium Business Cards",
+    desc_he: "כרטיסי ביקור על נייר כבד 350 גרם, דו-צדדי. גימורי פויל, ספוט UV, חיתוך מיוחד והבלטות.",
+    chips: ["85×55mm", "350 GSM", "Double-Side", "MOQ 250"]
+  }
+];
+
+const grid = document.getElementById('grid');
+items.forEach(item => {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card-head">
+      <span class="pid">${item.id}</span>
+      <div>
+        <div class="title-he">${item.title_he}</div>
+        <div class="title-en">${item.title_en}</div>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="pane clean">
+        <span class="label">Clean / Studio</span>
+        <img src="renders/${item.id}_clean.png" alt="${item.title_en} clean" onerror="this.style.display='none';this.parentElement.querySelector('.ph')?.style.removeProperty('display');">
+        <span class="ph" style="display:none;">PENDING<br>${item.id}_clean.png</span>
+      </div>
+      <div class="pane branded">
+        <span class="label">Branded / Premium</span>
+        <img src="renders/${item.id}_branded.png" alt="${item.title_en} branded" onerror="this.style.display='none';this.parentElement.querySelector('.ph')?.style.removeProperty('display');">
+        <span class="ph" style="display:none;">PENDING<br>${item.id}_branded.png</span>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="description">${item.desc_he}</div>
+      <div class="specs">
+        ${item.chips.map(c => `<span class="spec-chip"><b>${c}</b></span>`).join('')}
+      </div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "product_id": "PB-008",
+  "sku": "BUSINESS-CARD-STD",
+  "category": "Brand Print / Business Cards",
+  "title_he": "כרטיסי ביקור – הדפסה דו-צדדית פרימיום",
+  "title_en": "Premium Double-Sided Business Cards",
+  "description_he": "כרטיסי ביקור איכותיים על נייר כבד עם הדפסה דו-צדדית, מושלמים כפריט מיתוג נלווה לארוחה הטייק-אווי או כפיסת חלוקה ידנית. ניתנים להזמנה עם גימורי פויל זהב/כסף, ספוט UV, חיתוך מיוחד והבלטות לתחושת יוקרה מקסימלית.",
+  "description_en": "Heavy-stock double-sided business cards designed as a brand-touchpoint companion piece — slipped into the takeaway bag or handed out face-to-face. Available with gold/silver foil stamping, spot UV, die-cut shapes and embossing for a maximum-luxury feel.",
+  "specs": {
+    "material": "350 GSM coated stock (matte or gloss); soft-touch lamination optional",
+    "approx_dimensions_mm": "85 × 55 (EU standard)",
+    "print": "Double-sided full CMYK",
+    "finishes": "Matte / gloss / soft-touch / spot UV / gold or silver foil / emboss / deboss",
+    "moq_units": 250
+  },
+  "image_url_clean": "renders/PB-008_clean.png",
+  "image_url_branded_premium": "renders/PB-008_branded.png",
+  "tags": ["business card", "כרטיס ביקור", "stationery", "print", "branding"]
+}

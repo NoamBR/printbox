@@ -1,0 +1,49 @@
+{
+  "sequence_id": "printbox-outbound-v1",
+  "name": "PrintBox B2B Cold Outreach — 3 Touch",
+  "language": "he",
+  "timezone": "Asia/Jerusalem",
+  "send_window": {
+    "days": ["Sun", "Mon", "Tue", "Wed", "Thu"],
+    "start_hour_local": 9,
+    "end_hour_local": 17
+  },
+  "stop_conditions": {
+    "on_inbound_reply": true,
+    "on_unsubscribe": true,
+    "on_bounce": true,
+    "on_meeting_booked": true
+  },
+  "steps": [
+    {
+      "step": 1,
+      "template": "outreach/templates/touch-1.md",
+      "offset_days": 0,
+      "purpose": "Introduction & value prop. CTA: digital catalog OR physical sample kit."
+    },
+    {
+      "step": 2,
+      "template": "outreach/templates/touch-2.md",
+      "offset_days": 3,
+      "purpose": "Operational value add (branded carrier ROI). CTA: 5-minute call."
+    },
+    {
+      "step": 3,
+      "template": "outreach/templates/touch-3.md",
+      "offset_days": 7,
+      "purpose": "Breakup with low-commitment MOQ trial offer."
+    }
+  ],
+  "personalization_required_fields": [
+    "company_name",
+    "industry_he",
+    "first_name",
+    "city"
+  ],
+  "validation": {
+    "block_send_if_missing_merge_field": true,
+    "block_send_if_subject_over_chars": 60
+  },
+  "signature_block_required": true,
+  "signature_text": "בברכה,\nצוות פרינטבוקס | PrintBox - מיתוג אריזות חכם לעסקים"
+}

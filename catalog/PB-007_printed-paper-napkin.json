@@ -1,0 +1,20 @@
+{
+  "product_id": "PB-007",
+  "sku": "NAPKIN-PRINTED-SQ",
+  "category": "Tabletop & Accessories / Printed Napkins",
+  "title_he": "מפיות נייר ממותגות – הדפסה צבעונית",
+  "title_en": "Branded Printed Paper Napkins",
+  "description_he": "מפיות נייר 2-שכבות בהדפסת לוגו צבעונית, המעלות את חוויית הלקוח ומחזקות את זהות המותג גם בפרטים הקטנים. מתאימות למסעדות, בתי-קפה, אירועים וקייטרינג, וניתנות להזמנה בגוונים שונים, גימור מאט/מבריק והטבעות פויל לאקסטרה פרימיום.",
+  "description_en": "2-ply printed paper napkins delivering brand presence in every small detail of the customer experience. Built for restaurants, cafés, events and catering — available in custom stock colors, matte/gloss print finishes and foil-stamp upgrades for a premium tabletop moment.",
+  "specs": {
+    "material": "2-ply tissue paper, food-grade",
+    "approx_dimensions_mm": "330 × 330 (open), 165 × 165 (folded)",
+    "color_options": "Stock colors (white, kraft, custom dye); 1–4 color print; foil",
+    "fold": "Quarter-fold (1/4)",
+    "pack_size": "Bundles of 100; cartons of 2000",
+    "moq_units": 5000
+  },
+  "image_url_clean": "renders/PB-007_clean.png",
+  "image_url_branded_premium": "renders/PB-007_branded.png",
+  "tags": ["napkin", "מפיות", "tabletop", "branding", "restaurant"]
+}

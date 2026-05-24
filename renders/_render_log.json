@@ -1,0 +1,130 @@
+﻿[
+    {
+        "id":  "PB-001",
+        "type":  "clean",
+        "file":  "PB-001_clean.png",
+        "status":  "OK",
+        "size_kb":  431.9,
+        "seconds":  16.2
+    },
+    {
+        "id":  "PB-002",
+        "type":  "clean",
+        "file":  "PB-002_clean.png",
+        "status":  "OK",
+        "size_kb":  493.3,
+        "seconds":  18.5
+    },
+    {
+        "id":  "PB-003",
+        "type":  "clean",
+        "file":  "PB-003_clean.png",
+        "status":  "OK",
+        "size_kb":  221.2,
+        "seconds":  17.2
+    },
+    {
+        "id":  "PB-004",
+        "type":  "clean",
+        "file":  "PB-004_clean.png",
+        "status":  "OK",
+        "size_kb":  304.8,
+        "seconds":  17.1
+    },
+    {
+        "id":  "PB-005",
+        "type":  "clean",
+        "file":  "PB-005_clean.png",
+        "status":  "OK",
+        "size_kb":  315,
+        "seconds":  17
+    },
+    {
+        "id":  "PB-006",
+        "type":  "clean",
+        "file":  "PB-006_clean.png",
+        "status":  "OK",
+        "size_kb":  281.8,
+        "seconds":  17.2
+    },
+    {
+        "id":  "PB-007",
+        "type":  "clean",
+        "file":  "PB-007_clean.png",
+        "status":  "OK",
+        "size_kb":  303,
+        "seconds":  16
+    },
+    {
+        "id":  "PB-008",
+        "type":  "clean",
+        "file":  "PB-008_clean.png",
+        "status":  "OK",
+        "size_kb":  421.7,
+        "seconds":  16.3
+    },
+    {
+        "id":  "PB-001",
+        "type":  "branded",
+        "file":  "PB-001_branded.png",
+        "status":  "OK",
+        "size_kb":  587.4,
+        "seconds":  17.6
+    },
+    {
+        "id":  "PB-002",
+        "type":  "branded",
+        "file":  "PB-002_branded.png",
+        "status":  "OK",
+        "size_kb":  436,
+        "seconds":  17.4
+    },
+    {
+        "id":  "PB-003",
+        "type":  "branded",
+        "file":  "PB-003_branded.png",
+        "status":  "OK",
+        "size_kb":  411.1,
+        "seconds":  16.2
+    },
+    {
+        "id":  "PB-004",
+        "type":  "branded",
+        "file":  "PB-004_branded.png",
+        "status":  "OK",
+        "size_kb":  536.5,
+        "seconds":  16.4
+    },
+    {
+        "id":  "PB-005",
+        "type":  "branded",
+        "file":  "PB-005_branded.png",
+        "status":  "OK",
+        "size_kb":  430.2,
+        "seconds":  16.2
+    },
+    {
+        "id":  "PB-006",
+        "type":  "branded",
+        "file":  "PB-006_branded.png",
+        "status":  "OK",
+        "size_kb":  400.2,
+        "seconds":  16.7
+    },
+    {
+        "id":  "PB-007",
+        "type":  "branded",
+        "file":  "PB-007_branded.png",
+        "status":  "OK",
+        "size_kb":  786.1,
+        "seconds":  17.6
+    },
+    {
+        "id":  "PB-008",
+        "type":  "branded",
+        "file":  "PB-008_branded.png",
+        "status":  "OK",
+        "size_kb":  492.6,
+        "seconds":  17.1
+    }
+]
