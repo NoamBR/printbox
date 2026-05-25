@@ -43,7 +43,6 @@ const titles: Record<string, { title: string; category: string }> = {
   "PB-028": { title: "כוס גלידה פינט 1PINT", category: "אריזות גלידה" },
   "PB-029": { title: "כוס חמה דופן רגילה", category: "כוסות משקה חם" },
   "PB-030": { title: "כוס חמה דופן כפולה", category: "כוסות משקה חם" },
-  "PB-031": { title: "מגדל משקה לאירועים", category: "כוסות אירועים" },
 };
 
 function entry(id: string): Product {
@@ -72,7 +71,7 @@ const top8 = [
   "PB-002", // kraft burger box
 ];
 
-const remaining = Array.from({ length: 31 }, (_, i) =>
+const remaining = Array.from({ length: 30 }, (_, i) =>
   `PB-${String(i + 1).padStart(3, "0")}`
 ).filter((id) => !top8.includes(id));
 
