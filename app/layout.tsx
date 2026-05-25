@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   title: "PrintBox | אריזות ממותגות לעסקים",
   description:
     "הפקה איכותית של כוסות, מנשאים, מארזי מזון וקופסאות משלוח ממותגות. מהסקיצה לדלת תוך 14 ימי עסקים, החל מ-100 יחידות.",
-  metadataBase: new URL("https://printbox.example.com"),
+  metadataBase: new URL("https://print-box.store"),
   icons: {
     icon: [{ url: "/logo/favicon.svg", type: "image/svg+xml" }],
   },
