@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Frank_Ruhl_Libre, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import ThemeBootstrap from "@/components/ThemeBootstrap";
+import ScrollToTopOnLoad from "@/components/ScrollToTopOnLoad";
 
 const frankRuhlSans = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
@@ -62,6 +63,7 @@ export default function RootLayout({
     >
       <body className="font-sans bg-brand-noir text-brand-bone">
         <ThemeBootstrap />
+        <ScrollToTopOnLoad />
         {children}
       </body>
     </html>
