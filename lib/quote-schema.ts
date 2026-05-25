@@ -9,10 +9,10 @@ export const productOptions = [
 ] as const;
 
 export const quantityOptions = [
-  "100–500",
-  "500–2,000",
-  "2,000–10,000",
-  "10,000+",
+  "1,000–5,000",
+  "5,000–15,000",
+  "15,000–50,000",
+  "50,000+",
 ] as const;
 
 export const quoteSchema = z.object({

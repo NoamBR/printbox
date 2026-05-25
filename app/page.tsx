@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import ScarcityRibbon from "@/components/ScarcityRibbon";
 import ValueStrip from "@/components/ValueStrip";
 import ProductGrid from "@/components/ProductGrid";
+import MobileCatalogCta from "@/components/MobileCatalogCta";
 import Process from "@/components/Process";
 import SocialProof from "@/components/SocialProof";
 import GuaranteeStrip from "@/components/GuaranteeStrip";
@@ -17,7 +18,15 @@ export default function Home() {
       <Hero />
       <ScarcityRibbon />
       <ValueStrip />
-      <ProductGrid />
+
+      {/* Mobile: CTA card linking to /catalog. Desktop: inline grid. */}
+      <div className="lg:hidden">
+        <MobileCatalogCta />
+      </div>
+      <div className="hidden lg:block">
+        <ProductGrid />
+      </div>
+
       <Process />
       <SocialProof />
       <GuaranteeStrip />

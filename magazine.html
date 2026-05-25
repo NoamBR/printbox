@@ -229,20 +229,16 @@
     background: rgba(244,239,227,0.2);
   }
   .cover .masthead .pb-logo {
-    width: 32px;
-    height: 32px;
+    width: 38px;
+    height: 38px;
     flex-shrink: 0;
+    border-radius: 5px;
+    overflow: hidden;
   }
-  .cover .masthead .pb-logo circle {
-    fill: none;
-    stroke: var(--gold);
-    stroke-width: 1.2;
-  }
-  .cover .masthead .pb-logo text {
-    fill: var(--gold);
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 500;
+  .cover .masthead .pb-logo svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
   .cover .masthead .lockup {
     display: flex;
@@ -433,10 +429,14 @@
 <section class="page cover">
   <div class="left-col">
     <div class="masthead">
-      <svg class="pb-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="32" cy="32" r="29"/>
-        <text x="32" y="44" font-size="34" text-anchor="middle">P</text>
-      </svg>
+      <div class="pb-logo">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PrintBox">
+          <rect width="64" height="64" rx="10" fill="#1B1814"/>
+          <rect x="3.5" y="3.5" width="57" height="57" rx="7.5" fill="none" stroke="#B89758" stroke-opacity="0.45" stroke-width="0.6"/>
+          <text x="32" y="46" text-anchor="middle" font-family="'Cormorant Garamond', Garamond, 'Times New Roman', serif" font-size="48" font-style="italic" font-weight="500" fill="#EEE7D4">P</text>
+          <circle cx="48" cy="17" r="2" fill="#B89758"/>
+        </svg>
+      </div>
       <div class="lockup">
         <span class="lat">Printbox</span>
         <span class="heb">פרינטבוקס</span>
