@@ -9,3 +9,6 @@ quotes.json
 
 # Operational / PII — keep local only
 prospects/
+data/
+
+.vercel

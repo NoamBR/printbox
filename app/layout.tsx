@@ -1,12 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Heebo } from "next/font/google";
+import { Frank_Ruhl_Libre, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import ThemeBootstrap from "@/components/ThemeBootstrap";
 
-const heebo = Heebo({
+const frankRuhlSans = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["300", "400", "500", "700", "900"],
   display: "swap",
-  variable: "--font-heebo-hebrew",
+  variable: "--font-sans-he",
+});
+
+const frankRuhlSerif = Frank_Ruhl_Libre({
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "700", "900"],
+  display: "swap",
+  variable: "--font-serif-he",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-latin-display",
 });
 
 export const metadata: Metadata = {
@@ -14,6 +30,9 @@ export const metadata: Metadata = {
   description:
     "הפקה איכותית של כוסות, מנשאים, מארזי מזון וקופסאות משלוח ממותגות. מהסקיצה לדלת תוך 14 ימי עסקים, החל מ-100 יחידות.",
   metadataBase: new URL("https://printbox.example.com"),
+  icons: {
+    icon: [{ url: "/logo/favicon.svg", type: "image/svg+xml" }],
+  },
   openGraph: {
     title: "PrintBox | אריזות ממותגות לעסקים",
     description:
@@ -24,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFFBEB",
+  themeColor: "#FAF7F0",
   width: "device-width",
   initialScale: 1,
 };
@@ -35,8 +54,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="he" dir="rtl" className={heebo.variable}>
-      <body className="font-sans bg-brand-cream text-brand-ink">
+    <html
+      lang="he"
+      dir="rtl"
+      data-theme="light"
+      className={`${frankRuhlSans.variable} ${frankRuhlSerif.variable} ${cormorant.variable}`}
+    >
+      <body className="font-sans bg-brand-noir text-brand-bone">
+        <ThemeBootstrap />
         {children}
       </body>
     </html>

@@ -1,86 +1,118 @@
 "use client";
 
-import {
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  useReducedMotion,
-} from "framer-motion";
-import { type ReactNode, useRef } from "react";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import ProductModal from "./ProductModal";
 
 type Props = {
+  id: string;
   title: string;
-  spec: string;
-  illustration: ReactNode;
-  accent?: string;
+  category: string;
+  image: string;
+  imageHover?: string;
+  index?: number;
+  alt?: string;
 };
 
-const SPRING = { stiffness: 220, damping: 22, mass: 0.6 };
-
-export default function ProductCard({ title, spec, illustration, accent = "#92400E" }: Props) {
-  const reduce = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), SPRING);
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), SPRING);
-  const imageLift = useSpring(useTransform(y, [-0.5, 0.5], [12, -12]), SPRING);
-
-  function onMove(e: React.PointerEvent<HTMLDivElement>) {
-    if (reduce || !ref.current) return;
-    const r = ref.current.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width - 0.5;
-    const py = (e.clientY - r.top) / r.height - 0.5;
-    x.set(px);
-    y.set(py);
-  }
-  function onLeave() {
-    x.set(0);
-    y.set(0);
-  }
+export default function ProductCard({
+  id,
+  title,
+  category,
+  image,
+  imageHover,
+  index,
+  alt,
+}: Props) {
+  const [hovered, setHovered] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <motion.article
-      ref={ref}
-      onPointerMove={onMove}
-      onPointerLeave={onLeave}
-      whileTap={reduce ? undefined : { scale: 0.98 }}
-      style={
-        reduce
-          ? undefined
-          : { rotateX, rotateY, transformStyle: "preserve-3d", transformPerspective: 1000 }
-      }
-      className="group relative bg-white rounded-2xl border border-brand-line shadow-soft hover:shadow-softHover transition-shadow duration-300 cursor-pointer overflow-hidden"
-    >
-      <div
-        className="relative aspect-square overflow-hidden"
-        style={{ background: `linear-gradient(135deg, #FEF3C7 0%, #FFFFFF 100%)` }}
+    <>
+      <article
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        onClick={() => setModalOpen(true)}
+        className="group relative bg-brand-surfaceHi rounded-sm border border-brand-line hover:border-brand-gold/60 shadow-soft hover:shadow-softHover transition-all duration-300 overflow-hidden cursor-pointer"
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            setModalOpen(true);
+          }
+        }}
+        aria-label={`${title} — לחצו לצפייה ב-6 וריאציות מיתוג`}
       >
-        <motion.div
-          style={reduce ? undefined : { z: imageLift, transformStyle: "preserve-3d" }}
-          className="absolute inset-0 flex items-center justify-center p-8 group-hover:scale-[1.04] transition-transform duration-300 ease-out-quint"
-        >
-          {illustration}
-        </motion.div>
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 h-1.5"
-          style={{ background: accent }}
-        />
-      </div>
-      <div className="p-6 text-right">
-        <h3 className="text-xl font-bold text-brand-espresso mb-2">{title}</h3>
-        <p className="text-sm text-brand-ink/75 leading-relaxed mb-4 min-h-[2.5em]">
-          {spec}
-        </p>
-        <span className="inline-flex items-center gap-1.5 text-brand-amber font-semibold text-sm group-hover:gap-2.5 transition-all duration-200">
-          מידע נוסף
-          <ArrowLeft className="size-4" />
-        </span>
-      </div>
-    </motion.article>
+        {typeof index === "number" && (
+          <span
+            aria-hidden="true"
+            className="hidden md:inline absolute top-3 start-5 font-display italic text-brand-gold/15 select-none leading-none pointer-events-none z-10"
+            style={{ fontSize: "84px" }}
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+        )}
+
+        <div className="relative aspect-square overflow-hidden">
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background:
+                "radial-gradient(60% 50% at 50% 70%, rgb(var(--c-accent) / 0.18) 0%, transparent 70%)",
+            }}
+          />
+          <div className="absolute inset-0 flex items-center justify-center p-6 transition-transform duration-500 ease-out group-hover:scale-[1.05]">
+            <Image
+              src={image}
+              alt={alt ?? title}
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 80vw"
+              className={`object-contain transition-opacity duration-300 ${
+                hovered && imageHover ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            {imageHover && (
+              <Image
+                src={imageHover}
+                alt=""
+                aria-hidden="true"
+                fill
+                sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 80vw"
+                className={`object-contain transition-opacity duration-300 ${
+                  hovered ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            )}
+          </div>
+
+          {/* "6 variants" badge */}
+          <span className="absolute top-3 end-3 text-[10px] font-medium tracking-[0.15em] uppercase bg-brand-noir/85 text-brand-onEspresso px-2.5 py-1 rounded-sm">
+            6 וריאציות
+          </span>
+        </div>
+        <div className="p-6 text-right">
+          <p className="text-[11px] tracking-[0.2em] uppercase text-brand-gold/80 mb-2">
+            {category}
+          </p>
+          <h3 className="font-serif text-xl text-brand-bone mb-4 leading-tight">
+            {title}
+          </h3>
+          <span className="inline-flex items-center gap-1.5 text-brand-gold font-medium text-sm group-hover:gap-2.5 transition-all duration-200">
+            צפו בכל הוריאציות
+            <ArrowLeft className="size-4" />
+          </span>
+        </div>
+      </article>
+
+      <ProductModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        productId={id}
+        title={title}
+        category={category}
+      />
+    </>
   );
 }

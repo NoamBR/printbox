@@ -42,8 +42,8 @@
   ],
   "validation": {
     "block_send_if_missing_merge_field": true,
-    "block_send_if_subject_over_chars": 60
+    "block_send_if_subject_over_chars": 80
   },
   "signature_block_required": true,
-  "signature_text": "בברכה,\nצוות פרינטבוקס | PrintBox - מיתוג אריזות חכם לעסקים"
+  "signature_text": "בברכה,\nצוות PrintBox — מיתוג אריזות חכם לעסקים"
 }

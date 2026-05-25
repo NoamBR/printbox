@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פרינטבוקס · קולקציה 01 · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  :root {
+    --bg: #F4EFE3;
+    --bg-deep: #EAE2CE;
+    --line: #C9BFA7;
+    --ink: #1A1814;
+    --ink-soft: #4A4438;
+    --ink-mute: #8A7F66;
+    --accent: #5C5638;
+    --gold: #B89758;
+    --gold-deep: #8A6E3C;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Frank Ruhl Libre', 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    direction: rtl;
+  }
+  img { display: block; max-width: 100%; }
+
+  /* ========= TYPOGRAPHY ========= */
+  .lat { font-family: 'Cormorant Garamond', serif; }
+  .heb { font-family: 'Frank Ruhl Libre', serif; }
+  .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold-deep);
+    font-weight: 500;
+    direction: ltr;
+  }
+
+  /* ========= PAGE FRAMEWORK ========= */
+  .page {
+    width: 297mm;
+    height: 210mm;
+    padding: 14mm 18mm;
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* page chrome */
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid var(--line);
+    padding-bottom: 6mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    direction: ltr;
+  }
+  .page-head .left { letter-spacing: 0.35em; }
+  .page-head .right { letter-spacing: 0.35em; }
+  .page-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid var(--line);
+    padding-top: 4mm;
+    margin-top: auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    direction: ltr;
+  }
+  .page-foot .pgnum {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: var(--gold-deep);
+    text-transform: none;
+  }
+
+  /* ========= 01. COVER ========= */
+  .cover {
+    background: var(--ink);
+    color: var(--bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+  .cover .left-col {
+    padding: 14mm 18mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover .right-col {
+    overflow: hidden;
+    position: relative;
+  }
+  .cover .right-col {
+    overflow: hidden;
+  }
+  .cover .right-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .cover .masthead {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    border-bottom: 0.5px solid rgba(244,239,227,0.3);
+    padding-bottom: 6mm;
+  }
+  .cover .masthead .gold-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .cover .center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover .issue-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(244,239,227,0.55);
+    margin-bottom: 14mm;
+    direction: ltr;
+  }
+  .cover h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 84pt;
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--bg);
+    margin-bottom: 8mm;
+  }
+  .cover h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .cover .heb-line {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 22pt;
+    line-height: 1.3;
+    color: rgba(244,239,227,0.85);
+    margin-bottom: 12mm;
+    direction: rtl;
+  }
+  .cover .deck {
+    width: 64px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 8mm;
+  }
+  .cover .deck-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: rgba(244,239,227,0.7);
+    max-width: 100mm;
+    font-style: italic;
+  }
+  .cover .supply-strip {
+    margin-top: 10mm;
+    display: flex;
+    align-items: center;
+    gap: 8mm;
+    max-width: 130mm;
+  }
+  .cover .supply-strip .supply-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .cover .supply-strip .supply-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(244,239,227,0.5);
+    margin-bottom: 2mm;
+    direction: rtl;
+  }
+  .cover .supply-strip .supply-value {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--gold);
+    direction: rtl;
+  }
+  .cover .supply-strip .supply-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(244,239,227,0.2);
+  }
+  .cover .masthead .pb-logo {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .cover .masthead .pb-logo circle {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.2;
+  }
+  .cover .masthead .pb-logo text {
+    fill: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .cover .masthead .lockup {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .cover .masthead .lockup .lat {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15pt;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--bg);
+    font-weight: 500;
+  }
+  .cover .masthead .lockup .heb {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 9.5pt;
+    letter-spacing: 0.15em;
+    color: rgba(244,239,227,0.65);
+    font-weight: 400;
+    margin-top: 1mm;
+  }
+  .cover .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid rgba(244,239,227,0.3);
+    padding-top: 6mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(244,239,227,0.55);
+    direction: ltr;
+  }
+
+  /* ========= BRAND PAGE ========= */
+  .brand-page .title-block {
+    margin-top: 4mm;
+    margin-bottom: 4mm;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 14mm;
+    align-items: end;
+  }
+  .brand-page .chapter-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--gold-deep);
+    margin-bottom: 3mm;
+    direction: ltr;
+    font-weight: 500;
+  }
+  .brand-page h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 54pt;
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    margin-bottom: 3mm;
+    color: var(--ink);
+    direction: ltr;
+  }
+  .brand-page h2 em {
+    font-style: italic;
+    color: var(--gold-deep);
+    font-weight: 400;
+  }
+  .brand-page .heb-title {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 400;
+    font-size: 17pt;
+    line-height: 1.3;
+    color: var(--ink-soft);
+    margin-bottom: 4mm;
+  }
+  .brand-page .right-of-title {
+    padding-bottom: 2mm;
+  }
+  .brand-page .deck {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 11pt;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 110mm;
+    margin-bottom: 4mm;
+  }
+  .brand-page .palette {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .brand-page .palette .swatch {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(0,0,0,0.1);
+  }
+  .brand-page .palette .label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-right: 6px;
+    direction: ltr;
+  }
+  .brand-page .divider {
+    height: 0.5px;
+    background: var(--line);
+    margin: 3mm 0 5mm;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6mm 5mm;
+    flex: 1;
+    align-content: start;
+  }
+  .product-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .pcard {
+    display: flex;
+    flex-direction: column;
+  }
+  .pcard .img-wrap {
+    aspect-ratio: 11 / 6;
+    background: var(--bg-deep);
+    overflow: hidden;
+    margin-bottom: 3mm;
+    border-radius: 1mm;
+    border: 0.5px solid var(--line);
+  }
+  .pcard .img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .pcard .sku-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1mm;
+  }
+  .pcard .sku {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: var(--gold-deep);
+    letter-spacing: 0.15em;
+    direction: ltr;
+  }
+  .pcard .moq {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 8.5pt;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    direction: ltr;
+  }
+  .pcard h5 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 500;
+    font-size: 12pt;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1mm;
+  }
+  .pcard p {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 9.5pt;
+    line-height: 1.4;
+    color: var(--ink-mute);
+  }
+
+  /* Smaller products row for pages with more items */
+  .product-grid.dense { gap: 4mm; }
+  .product-grid.dense .pcard h5 { font-size: 11pt; }
+  .product-grid.dense .pcard p { font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — COVER ============ -->
+<section class="page cover">
+  <div class="left-col">
+    <div class="masthead">
+      <svg class="pb-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="29"/>
+        <text x="32" y="44" font-size="34" text-anchor="middle">P</text>
+      </svg>
+      <div class="lockup">
+        <span class="lat">Printbox</span>
+        <span class="heb">פרינטבוקס</span>
+      </div>
+    </div>
+
+    <div class="center">
+      <div class="issue-line">The Edit · No. 01 · MMXXVI</div>
+      <h1>The<br><em>Packaging</em><br>Edit</h1>
+      <div class="heb-line">50+ פריטים. המותג שלכם.<br>קולקציה ראשונה.</div>
+      <div class="deck"></div>
+      <p class="deck-text">
+        אריזות מותאמות אישית לעסקים שמבינים שהרגע הראשון הוא גם הרגע שזוכרים.
+      </p>
+      <div class="supply-strip">
+        <div class="supply-item">
+          <span class="supply-label">זמן אספקה</span>
+          <span class="supply-value">7–14 ימי עסקים</span>
+        </div>
+        <div class="supply-divider"></div>
+        <div class="supply-item">
+          <span class="supply-label">הצעת מחיר</span>
+          <span class="supply-value">תוך 48 שעות</span>
+        </div>
+        <div class="supply-divider"></div>
+        <div class="supply-item">
+          <span class="supply-label">MOQ מ-</span>
+          <span class="supply-value">250 יחידות</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Printbox · Tel Aviv</span>
+      <span>www.printbox.co.il</span>
+    </div>
+  </div>
+  <div class="right-col">
+    <img src="renders/PB-001_v1.png" alt="">
+  </div>
+</section>
+
+<!-- ============ PAGE 2 — RUBY & BUN ============ -->
+<section class="page brand-page">
+  <div class="page-head">
+    <span class="left">Chapter I</span>
+    <span>Printbox · Collection 01</span>
+    <span class="right">Ruby &amp; Bun</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="chapter-eyebrow">Chapter I</div>
+      <h2>Ruby <em>&amp;</em> Bun</h2>
+      <div class="heb-title">בורגר רחובי, בלי התנצלויות</div>
+    </div>
+    <div class="right-of-title">
+      <p class="deck">קלאסיקה אמריקאית בעריכה ישראלית. אדום דובדבן, שחור עז, וטיפוגרפיה שלא יודעת להתחבא. הברנדינג שלא מתחנן לתשומת לב — לוקח אותה.</p>
+      <div class="palette">
+        <span class="label">Palette</span>
+        <div class="swatch" style="background:#C8344A;"></div>
+        <div class="swatch" style="background:#1B1B1B;"></div>
+        <div class="swatch" style="background:#F4F1EA;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-grid">
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-001_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-001</span><span class="moq">MOQ 1,000</span></div>
+      <h5>קופסת המבורגר צדפה</h5>
+      <p>קרטון מצופה, פתיחה צידית</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-002_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-002</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת קראפט גלי</h5>
+      <p>פתיחה עליונה, גלי B-Flute</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-003_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-003</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס משקה קר 16oz</h5>
+      <p>מכסה שטוח, קש מותאם</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-004_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-004</span><span class="moq">MOQ 500</span></div>
+      <h5>שקית נשיאה SOS</h5>
+      <p>קראפט, ידיות שטוחות</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-006_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-006</span><span class="moq">MOQ 1,000</span></div>
+      <h5>סקופ צ'יפס</h5>
+      <p>עמיד שומן, פתח רחב</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-019_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-019</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת ארוחה Gable</h5>
+      <p>ידית מובנית, מנות</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-020_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-020</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת קומבו</h5>
+      <p>חלון חיתוך, פתיחה מהירה</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-024_v1.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-024</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת פיצה מרובעת</h5>
+      <p>קרטון גלי B-Flute</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">II</span>
+    <span>Printbox · 2026</span>
+    <span>Chapter I — Ruby &amp; Bun</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 3 — OLIVE GROVE ============ -->
+<section class="page brand-page">
+  <div class="page-head">
+    <span class="left">Chapter II</span>
+    <span>Printbox · Collection 01</span>
+    <span class="right">Olive Grove</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="chapter-eyebrow">Chapter II</div>
+      <h2>Olive <em>Grove</em></h2>
+      <div class="heb-title">הקהילה הצמחונית</div>
+    </div>
+    <div class="right-of-title">
+      <p class="deck">ירוק מרווה, פויל זהב מינימלי, וענפי זית מצוירים ביד. כשבריאות פוגשת אסתטיקה — נולד מותג שמרגיש כמו פינת קפה בכפר בטוסקנה.</p>
+      <div class="palette">
+        <span class="label">Palette</span>
+        <div class="swatch" style="background:#9CAD8E;"></div>
+        <div class="swatch" style="background:#C9A55A;"></div>
+        <div class="swatch" style="background:#B05A3C;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-grid">
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-005_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-005</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת ארוחה מרובעת</h5>
+      <p>בסיס + כיסוי, ניתנת לערימה</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-007_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-007</span><span class="moq">MOQ 5,000</span></div>
+      <h5>מפיות נייר ממותגות</h5>
+      <p>2-Ply, קיפול רבע</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-012_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-012</span><span class="moq">MOQ 5,000</span></div>
+      <h5>נייר עטיפה למזון</h5>
+      <p>עמיד שומן, פטרן בוטני</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-015_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-015</span><span class="moq">MOQ 500</span></div>
+      <h5>שקית לחם Tin-Tie</h5>
+      <p>חלון שקוף, סגירה היגיינית</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-024_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-024</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת פיצה איטלקית</h5>
+      <p>B-Flute עם איור זית</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-027_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-027</span><span class="moq">MOQ 1,000</span></div>
+      <h5>קערת סלט / פוקה</h5>
+      <p>מכסה כיפה PET</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-028_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-028</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס גלידה פינט</h5>
+      <p>וניל בורבון, 330g</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-008_v2.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-008</span><span class="moq">MOQ 250</span></div>
+      <h5>כרטיסי ביקור פרימיום</h5>
+      <p>350GSM, פויל זהב</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">III</span>
+    <span>Printbox · 2026</span>
+    <span>Chapter II — Olive Grove</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 4 — TOKYO LANE ============ -->
+<section class="page brand-page">
+  <div class="page-head">
+    <span class="left">Chapter III</span>
+    <span>Printbox · Collection 01</span>
+    <span class="right">Tōkyo Lane</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="chapter-eyebrow">Chapter III</div>
+      <h2>Tōkyo <em>Lane</em></h2>
+      <div class="heb-title">מינימליזם יפני, גרסה ישראלית</div>
+    </div>
+    <div class="right-of-title">
+      <p class="deck">נייבי עמוק, טנגרין בוהק, ועיגול שמש אחד. פחות זה יותר, בגרסה האסיאתית — סקרין-פרינט נקי, טיפוגרפיה מודרנית, ושום קישוט מיותר.</p>
+      <div class="palette">
+        <span class="label">Palette</span>
+        <div class="swatch" style="background:#1F3A5F;"></div>
+        <div class="swatch" style="background:#F18B3B;"></div>
+        <div class="swatch" style="background:#F4F1EA;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-grid">
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-009_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-009</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס U מנייר</h5>
+      <p>צורת טיוליפ, גלידה/שייק</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-010_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-010</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס U PET שקופה</h5>
+      <p>תצוגה ויזואלית מלאה</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-011_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-011</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס פלסטיק קלאסית</h5>
+      <p>16oz, מכסה שטוח</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-016_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-016</span><span class="moq">MOQ 500</span></div>
+      <h5>מגש נשיאה לכוסות</h5>
+      <p>3 חורים, מיתוג בולט</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-023_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-023</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת פיצה משולשת</h5>
+      <p>פרוסה בודדת, חיתוך ייחודי</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-025_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-025</span><span class="moq">MOQ 1,000</span></div>
+      <h5>גליל סושי דק</h5>
+      <p>מכסה שטוח, פרופיל דק</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-026_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-026</span><span class="moq">MOQ 1,000</span></div>
+      <h5>גליל סושי פטנט</h5>
+      <p>מכסה כיפה, פרופיל 4:1</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-013_v3.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-013</span><span class="moq">MOQ 2,000</span></div>
+      <h5>שקית קוקי יחידנית</h5>
+      <p>חלון שקוף, תווית טעם</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">IV</span>
+    <span>Printbox · 2026</span>
+    <span>Chapter III — Tōkyo Lane</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 5 — BIGM ============ -->
+<section class="page brand-page">
+  <div class="page-head">
+    <span class="left">Chapter IV</span>
+    <span>Printbox · Collection 01</span>
+    <span class="right">BigM</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="chapter-eyebrow">Chapter IV</div>
+      <h2>Big<em>M</em></h2>
+      <div class="heb-title">מזון מהיר, אנרגיה גבוהה</div>
+    </div>
+    <div class="right-of-title">
+      <p class="deck">צהוב נקי, שחור מאסיבי, ובאדג' M שאי-אפשר להתעלם ממנו. CMYK רווי, פס ספוט-UV מהבהב, וסיפור גרפי שמדבר בקול רם.</p>
+      <div class="palette">
+        <span class="label">Palette</span>
+        <div class="swatch" style="background:#F5D11A;"></div>
+        <div class="swatch" style="background:#1B1B1B;"></div>
+        <div class="swatch" style="background:#F4F1EA;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-grid">
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-001_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-001</span><span class="moq">MOQ 1,000</span></div>
+      <h5>קופסת המבורגר צדפה</h5>
+      <p>צהוב + שחור מאסיבי</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-004_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-004</span><span class="moq">MOQ 500</span></div>
+      <h5>שקית נשיאה SOS</h5>
+      <p>צהוב מהלך-רחוב</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-006_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-006</span><span class="moq">MOQ 1,000</span></div>
+      <h5>סקופ צ'יפס</h5>
+      <p>צבע סיגנייצ'ר</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-011_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-011</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס פלסטיק שקופה</h5>
+      <p>פס צהוב סביב הכוס</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-019_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-019</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת ארוחה Gable</h5>
+      <p>הקלאסיקה של BIGM</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-020_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-020</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת קומבו עוף</h5>
+      <p>חלון פתיחה גלוי</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-021_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-021</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת דונאטס 6</h5>
+      <p>פסים בולטים, מחיצות</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-023_v4.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-023</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת פיצה משולשת</h5>
+      <p>חיתוך גיאומטרי</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">V</span>
+    <span>Printbox · 2026</span>
+    <span>Chapter IV — BigM</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 6 — CRAVE LAB ============ -->
+<section class="page brand-page">
+  <div class="page-head">
+    <span class="left">Chapter V</span>
+    <span>Printbox · Collection 01</span>
+    <span class="right">Crave Lab</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="chapter-eyebrow">Chapter V</div>
+      <h2>Crave <em>Lab</em></h2>
+      <div class="heb-title">קפה רטרו אמריקאי</div>
+    </div>
+    <div class="right-of-title">
+      <p class="deck">חלודה ופויל זהב. באדג' עגול שמזכיר תרמיל קפה משנת 1955. מוטיב טפטופי שזורם בכל פריט — כאילו הקפה עוד לא הספיק להתייבש.</p>
+      <div class="palette">
+        <span class="label">Palette</span>
+        <div class="swatch" style="background:#B05A3C;"></div>
+        <div class="swatch" style="background:#C9A55A;"></div>
+        <div class="swatch" style="background:#F4F1EA;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-grid">
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-003_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-003</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס משקה קר 16oz</h5>
+      <p>פויל זהב, מותג עגול</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-004_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-004</span><span class="moq">MOQ 500</span></div>
+      <h5>שקית נשיאה SOS</h5>
+      <p>טפטוף זהב, באדג' מרכזי</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-012_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-012</span><span class="moq">MOQ 5,000</span></div>
+      <h5>נייר עטיפה למזון</h5>
+      <p>פטרן באדג' חוזר</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-030_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-030</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס קפה חמה דופן-כפולה</h5>
+      <p>מבודדת, ללא שרוול</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-015_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-015</span><span class="moq">MOQ 500</span></div>
+      <h5>שקית לחם Tin-Tie</h5>
+      <p>חלודה מלאה, באדג' מטבעי</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-016_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-016</span><span class="moq">MOQ 500</span></div>
+      <h5>מגש נשיאה לכוסות</h5>
+      <p>טפטוף זהב לאורך</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-018_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-018</span><span class="moq">MOQ 250</span></div>
+      <h5>קופסת מתנה פויל זהב</h5>
+      <p>הפרימיום של הקולקציה</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-029_v5.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-029</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס קפה חמה דופן-יחידה</h5>
+      <p>מכסה חום מורם</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">VI</span>
+    <span>Printbox · 2026</span>
+    <span>Chapter V — Crave Lab</span>
+  </div>
+</section>
+
+<!-- ============ PAGE 7 — GREEN HARBOR ============ -->
+<section class="page brand-page">
+  <div class="page-head">
+    <span class="left">Chapter VI</span>
+    <span>Printbox · Collection 01</span>
+    <span class="right">Green Harbor</span>
+  </div>
+
+  <div class="title-block">
+    <div>
+      <div class="chapter-eyebrow">Chapter VI</div>
+      <h2>Green <em>Harbor</em></h2>
+      <div class="heb-title">בית קפה ארטיזנלי</div>
+    </div>
+    <div class="right-of-title">
+      <p class="deck">ירוק יער, שנהב חם, ועלה זהוב קטן. שקט, מדויק, פרימיום — האסתטיקה של בית קפה שבונה אמון לאט אבל בטוח, מספל לספל.</p>
+      <div class="palette">
+        <span class="label">Palette</span>
+        <div class="swatch" style="background:#3F5A3E;"></div>
+        <div class="swatch" style="background:#F4F1EA;"></div>
+        <div class="swatch" style="background:#C9A55A;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-grid">
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-003_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-003</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס קפה 16oz</h5>
+      <p>ירוק יער, אמבלם זהב</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-005_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-005</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת ארוחה</h5>
+      <p>EST 2024, ירוק רגוע</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-014_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-014</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת דונאטס</h5>
+      <p>חוץ ירוק, פנים מנומר</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-015_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-015</span><span class="moq">MOQ 500</span></div>
+      <h5>שקית לחם Tin-Tie</h5>
+      <p>אמבלם G, ארטיזן</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-017_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-017</span><span class="moq">MOQ 1,000</span></div>
+      <h5>מגש סכו"ם</h5>
+      <p>סט מלא, שירות שולחן</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-021_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-021</span><span class="moq">MOQ 500</span></div>
+      <h5>קופסת דונאטס 6</h5>
+      <p>פסים, פנים מודפס</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-029_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-029</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס קפה חמה דופן-יחידה</h5>
+      <p>אמבלם G זהב, מכסה חום</p>
+    </div>
+    <div class="pcard">
+      <div class="img-wrap"><img src="renders/PB-030_v6.png" alt=""></div>
+      <div class="sku-line"><span class="sku">PB-030</span><span class="moq">MOQ 1,000</span></div>
+      <h5>כוס קפה חמה דופן-כפולה</h5>
+      <p>מבודדת, ללא שרוול</p>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">VII</span>
+    <span>Printbox · hello@printbox.co.il · 03-000-0000</span>
+    <span>Chapter VI — Green Harbor</span>
+  </div>
+</section>
+
+</body>
+</html>

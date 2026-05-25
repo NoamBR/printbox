@@ -1,0 +1,31 @@
+# Source render outputs at repo root — only public/renders/ is served by Next.js
+# Leading slash anchors to root so public/renders/ is NOT matched.
+/renders/
+
+# Local-only operational data
+data/
+prospects/
+quotes.json
+
+# Local generation/automation scripts (not used at runtime)
+scripts/
+
+# Static HTML snapshot — not part of the Next app
+catalog-page.html
+
+# Environment files (Vercel manages env vars via dashboard)
+.env*.local
+
+# ── Ops/admin panel — needs persistent DB + IMAP, doesn't work on Vercel.
+# Excluded so the marketing site builds cleanly; panel keeps running locally.
+app/panel/
+app/api/panel/
+components/panel/
+middleware.ts
+lib/db.ts
+lib/imap.ts
+lib/sender/
+lib/sequencer.ts
+lib/drafter.ts
+lib/classifier.ts
+lib/auth.ts

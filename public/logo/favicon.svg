@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="PrintBox">
+  <title>PrintBox</title>
+  <rect width="64" height="64" rx="8" fill="rgb(40,32,24)"/>
+  <g fill="rgb(238,231,212)" transform="translate(0, 0) scale(0.32)">
+    <rect x="48" y="45" width="20" height="110"/>
+    <path d="M 68 45 A 30 30 0 0 1 68 105 L 68 91 A 14 14 0 0 0 68 59 Z"/>
+    <rect x="104" y="45" width="20" height="110"/>
+    <path d="M 124 45 A 25 25 0 0 1 124 95 L 124 83 A 12 12 0 0 0 124 57 Z"/>
+    <path d="M 124 95 A 30 30 0 0 1 124 155 L 124 141 A 14 14 0 0 0 124 109 Z"/>
+  </g>
+  <circle cx="54" cy="10" r="2" fill="rgb(201,165,90)"/>
+</svg>

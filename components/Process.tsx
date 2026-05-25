@@ -1,22 +1,15 @@
 "use client";
 
 import {
-  motion,
-  useInView,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from "framer-motion";
-import { useRef } from "react";
-import {
   LayoutGrid,
   Upload,
   CheckCircle2,
   Truck,
   type LucideIcon,
 } from "lucide-react";
-import RevealOnScroll from "@/components/motion/RevealOnScroll";
-import { ease } from "@/lib/motion";
+import { motion, useReducedMotion } from "framer-motion";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 type Step = { n: number; title: string; body: string; Icon: LucideIcon };
 
@@ -36,102 +29,95 @@ const steps: Step[] = [
   {
     n: 3,
     title: "מאשרים דוגמה",
-    body: "תקבלו דוגמה דיגיטלית תלת-ממדית תוך 48 שעות. רק אחרי אישור — מתחילים בהפקה.",
+    body: "תקבלו דוגמה דיגיטלית תלת-ממדית מותאמת לעיצוב שלכם. רק אחרי אישור — מתחילים בהפקה.",
     Icon: CheckCircle2,
   },
   {
     n: 4,
     title: "מקבלים עד הדלת",
-    body: "ייצור, אריזה ומשלוח בתוך 14 ימי עסקים. עם אחריות מלאה.",
+    body: "ייצור, אריזה ומשלוח מקצועי עד הדלת. עם אחריות מלאה על כל הזמנה.",
     Icon: Truck,
   },
 ];
 
-function StepCircle({ step, index }: { step: Step; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { margin: "-30% 0px -30% 0px", once: true });
-  const reduce = useReducedMotion();
-
-  const visible = reduce || inView;
-
-  return (
-    <div ref={ref} className="relative flex lg:flex-col items-center lg:items-center gap-4 lg:gap-5 text-right lg:text-center">
-      <motion.div
-        initial={reduce ? { scale: 1, opacity: 1 } : { scale: 0.6, opacity: 0 }}
-        animate={visible ? { scale: 1, opacity: 1 } : { scale: 0.6, opacity: 0 }}
-        transition={{ duration: 0.5, ease: ease.outQuint, delay: index * 0.05 }}
-        className="relative z-10 shrink-0 w-16 h-16 lg:w-20 lg:h-20 rounded-full bg-white border-2 border-brand-kraft flex items-center justify-center shadow-soft"
-      >
-        <step.Icon className="size-7 lg:size-8 text-brand-kraft" strokeWidth={2} />
-        <span className="absolute -top-2 -end-2 bg-brand-amber text-white text-xs font-bold w-7 h-7 rounded-full flex items-center justify-center shadow-soft">
-          {step.n}
-        </span>
-      </motion.div>
-      <div className="lg:max-w-[220px]">
-        <h3 className="text-lg lg:text-xl font-bold text-brand-espresso mb-1">
-          {step.title}
-        </h3>
-        <p className="text-sm text-brand-ink/80 leading-relaxed">{step.body}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function Process() {
-  const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 60%"],
-  });
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
   return (
-    <section className="bg-brand-paper border-y border-brand-line/50" aria-labelledby="process-heading">
-      <div className="max-w-container mx-auto px-6 lg:px-10 py-20 lg:py-28">
-        <RevealOnScroll>
-          <div className="text-right mb-12 lg:mb-20 max-w-2xl">
-            <p className="text-sm font-semibold text-brand-amber uppercase tracking-wide mb-3">
-              איך זה עובד
-            </p>
-            <h2
-              id="process-heading"
-              className="text-[clamp(28px,4vw,40px)] font-bold text-brand-espresso leading-tight"
-            >
-              4 צעדים מהרעיון למשלוח
-            </h2>
-          </div>
-        </RevealOnScroll>
+    <section
+      className="relative bg-brand-surfaceHi border-y border-brand-line overflow-hidden"
+      aria-labelledby="process-heading"
+    >
+      <span
+        aria-hidden="true"
+        className="hidden lg:block absolute top-14 left-12 font-display italic text-brand-gold/10 leading-none select-none pointer-events-none"
+        style={{ fontSize: "clamp(120px, 18vw, 260px)" }}
+      >
+        03
+      </span>
 
-        <div ref={ref} className="relative">
-          {/* Desktop horizontal connecting line (RTL: right → left fill) */}
-          <svg
-            aria-hidden="true"
-            className="hidden lg:block absolute top-10 inset-x-0 w-full h-1 pointer-events-none"
-            viewBox="0 0 1200 4"
-            preserveAspectRatio="none"
+      <div className="relative max-w-container mx-auto px-6 lg:px-10 py-12 lg:py-20">
+        <motion.div
+          initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: EASE }}
+          className="text-right mb-10 lg:mb-14 max-w-2xl"
+        >
+          <p className="text-[11px] font-medium tracking-[0.3em] text-brand-gold uppercase mb-3">
+            <span className="font-display italic me-2">Process</span>· איך זה
+            עובד
+          </p>
+          <h2
+            id="process-heading"
+            className="font-serif text-[clamp(28px,4.5vw,64px)] font-medium text-brand-bone leading-[1.05]"
           >
-            <line x1="0" y1="2" x2="1200" y2="2" stroke="#E7D9B8" strokeWidth="2" />
-            <motion.line
-              x1="1200"
-              y1="2"
-              x2="0"
-              y2="2"
-              stroke="#D97706"
-              strokeWidth="2"
-              style={reduce ? { pathLength: 1 } : { pathLength }}
-            />
-          </svg>
+            <span className="italic font-display font-light text-brand-gold">
+              4 צעדים
+            </span>{" "}
+            מהרעיון למשלוח.
+          </h2>
+        </motion.div>
 
-          {/* Mobile vertical connecting line */}
+        <div className="relative">
+          {/* Desktop horizontal line */}
           <div
             aria-hidden="true"
-            className="lg:hidden absolute top-0 bottom-0 end-8 w-0.5 bg-brand-line"
+            className="hidden lg:block absolute top-12 inset-x-0 h-px bg-brand-line"
+          />
+          {/* Mobile vertical line */}
+          <div
+            aria-hidden="true"
+            className="lg:hidden absolute top-0 bottom-0 end-9 w-px bg-brand-line"
           />
 
-          <div className="grid lg:grid-cols-4 gap-10 lg:gap-6 relative">
+          <div className="grid lg:grid-cols-4 gap-8 lg:gap-6 relative">
             {steps.map((s, i) => (
-              <StepCircle key={s.n} step={s} index={i} />
+              <motion.div
+                key={s.n}
+                initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, ease: EASE, delay: i * 0.08 }}
+                className="relative flex lg:flex-col items-center lg:items-center gap-4 lg:gap-5 text-right lg:text-center"
+              >
+                <div className="relative z-10 shrink-0 w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-brand-surface border-2 border-brand-gold flex items-center justify-center shadow-soft">
+                  <s.Icon
+                    className="size-8 lg:size-9 text-brand-gold"
+                    strokeWidth={1.4}
+                  />
+                  <span className="absolute -top-2 -end-2 bg-brand-gold text-brand-onEspresso text-xs font-display italic font-semibold w-8 h-8 rounded-full flex items-center justify-center">
+                    {s.n}
+                  </span>
+                </div>
+                <div className="lg:max-w-[240px]">
+                  <h3 className="font-serif text-xl lg:text-2xl text-brand-bone mb-2 leading-tight">
+                    {s.title}
+                  </h3>
+                  <p className="text-sm text-brand-boneDim leading-relaxed">
+                    {s.body}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

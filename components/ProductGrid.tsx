@@ -1,96 +1,81 @@
 "use client";
 
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import ProductCard from "./ProductCard";
-import { StaggerParent, StaggerChild } from "@/components/motion/Stagger";
-import RevealOnScroll from "@/components/motion/RevealOnScroll";
+import { products, DEFAULT_VISIBLE } from "@/lib/products";
+import { ChevronDown } from "lucide-react";
 
-const products = [
-  {
-    title: "כוסות נייר ממותגות",
-    spec: "הדפסה מלאה ב-4 צבעים | 4oz–16oz | מתאים לחם וקר",
-    accent: "#92400E",
-    illustration: (
-      <svg viewBox="0 0 120 150" className="w-32 h-40" aria-hidden="true">
-        <ellipse cx="60" cy="14" rx="40" ry="7" fill="#FDE68A" stroke="#92400E" strokeWidth="1.4" />
-        <path d="M22 14 L98 14 L88 140 L32 140 Z" fill="#FFFFFF" stroke="#92400E" strokeWidth="1.4" />
-        <rect x="40" y="55" width="40" height="40" rx="4" fill="#92400E" />
-        <text x="60" y="80" textAnchor="middle" fontSize="11" fontWeight="700" fill="#FFFBEB" fontFamily="var(--font-heebo-hebrew), sans-serif">המותג</text>
-      </svg>
-    ),
-  },
-  {
-    title: "מנשאי כוסות",
-    spec: "‎2 ו-4 כוסות | קרטון ממוחזר | לוגו מובלט אופציונלי",
-    accent: "#78350F",
-    illustration: (
-      <svg viewBox="0 0 160 110" className="w-44 h-32" aria-hidden="true">
-        <rect x="8" y="28" width="144" height="72" rx="6" fill="#92400E" stroke="#78350F" strokeWidth="1.4" />
-        {[24, 60, 96, 132].map((cx) => (
-          <circle key={cx} cx={cx} cy={56} r={13} fill="#FFFBEB" stroke="#78350F" strokeWidth="1.2" />
-        ))}
-        <rect x="58" y="10" width="44" height="14" rx="3" fill="#78350F" />
-      </svg>
-    ),
-  },
-  {
-    title: "מארזי מזון (Take-Away)",
-    spec: "קרטון מצופה | מידות שונות | חיתוך מותאם אישית",
-    accent: "#D97706",
-    illustration: (
-      <svg viewBox="0 0 150 110" className="w-40 h-32" aria-hidden="true">
-        <path d="M14 28 L75 8 L136 28 L136 96 L14 96 Z" fill="#FFFBEB" stroke="#92400E" strokeWidth="1.4" />
-        <line x1="75" y1="8" x2="75" y2="96" stroke="#92400E" strokeWidth="1" strokeDasharray="3 2" />
-        <rect x="48" y="48" width="54" height="18" rx="2" fill="#D97706" />
-        <text x="75" y="61" textAnchor="middle" fontSize="9" fontWeight="700" fill="#FFFBEB" fontFamily="var(--font-heebo-hebrew), sans-serif">לוגו</text>
-      </svg>
-    ),
-  },
-  {
-    title: "קופסאות משלוח ממותגות",
-    spec: "קרטון גלי 3-שכבות | הדפסה פנים וחוץ | אריזה מהירה",
-    accent: "#A16207",
-    illustration: (
-      <svg viewBox="0 0 160 120" className="w-44 h-32" aria-hidden="true">
-        <path d="M14 38 L80 14 L146 38 L146 100 L80 116 L14 100 Z" fill="#78350F" stroke="#3B1A05" strokeWidth="1.4" />
-        <path d="M14 38 L80 62 L146 38" fill="none" stroke="#3B1A05" strokeWidth="1.4" />
-        <path d="M80 62 L80 116" stroke="#3B1A05" strokeWidth="1.2" />
-        <rect x="58" y="76" width="44" height="14" rx="2" fill="#FFFBEB" />
-        <text x="80" y="86" textAnchor="middle" fontSize="9" fontWeight="700" fill="#78350F" fontFamily="var(--font-heebo-hebrew), sans-serif">המותג</text>
-      </svg>
-    ),
-  },
-];
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function ProductGrid() {
+  const reduce = useReducedMotion();
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? products : products.slice(0, DEFAULT_VISIBLE);
+  const hasMore = products.length > DEFAULT_VISIBLE;
+
   return (
-    <section id="products" className="bg-brand-cream" aria-labelledby="products-heading">
-      <div className="max-w-container mx-auto px-6 lg:px-10 py-20 lg:py-28">
-        <RevealOnScroll>
-          <div className="text-right mb-12 lg:mb-16 max-w-2xl">
-            <p className="text-sm font-semibold text-brand-amber uppercase tracking-wide mb-3">
-              קטלוג המוצרים
-            </p>
-            <h2
-              id="products-heading"
-              className="text-[clamp(28px,4vw,40px)] font-bold text-brand-espresso leading-tight"
-            >
-              המוצרים שלנו
-            </h2>
-            <p className="mt-3 text-lg text-brand-ink/80">
-              ארבעה קווי מוצר עיקריים — כולם ניתנים להתאמה מלאה למיתוג שלכם.
-            </p>
-          </div>
-        </RevealOnScroll>
+    <section
+      id="products"
+      className="relative bg-brand-noir overflow-hidden"
+      aria-labelledby="products-heading"
+    >
+      <span
+        aria-hidden="true"
+        className="hidden lg:block absolute top-14 left-12 font-display italic text-brand-gold/10 leading-none select-none pointer-events-none"
+        style={{ fontSize: "clamp(120px, 18vw, 260px)" }}
+      >
+        02
+      </span>
+
+      <div className="relative max-w-container mx-auto px-6 lg:px-10 py-12 lg:py-20">
+        <motion.div
+          initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: EASE }}
+          className="text-right mb-8 lg:mb-12 max-w-2xl"
+        >
+          <p className="text-[11px] font-medium tracking-[0.3em] text-brand-gold uppercase mb-3">
+            <span className="font-display italic me-2">The</span> Collection · הקטלוג
+          </p>
+          <h2
+            id="products-heading"
+            className="font-serif text-[clamp(28px,4.5vw,64px)] font-medium text-brand-bone leading-[1.05]"
+          >
+            <span className="italic font-display font-light text-brand-gold">
+              {products.length}
+            </span>{" "}
+            קטגוריות,
+            <br />
+            אינסוף הזדמנויות מיתוג.
+          </h2>
+          <p className="mt-3 text-base lg:text-lg text-brand-boneDim leading-relaxed">
+            הצגנו את המוצרים הנמכרים ביותר. לחצו על &quot;הצגת עוד&quot; כדי
+            לראות את הקטלוג המלא.
+          </p>
+        </motion.div>
 
         {/* Desktop grid */}
-        <div className="hidden md:block">
-          <StaggerParent className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {products.map((p) => (
-              <StaggerChild key={p.title}>
-                <ProductCard {...p} />
-              </StaggerChild>
-            ))}
-          </StaggerParent>
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 lg:gap-6">
+          {visible.map((p, i) => (
+            <motion.div
+              key={p.id}
+              initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease: EASE, delay: (i % 8) * 0.04 }}
+            >
+              <ProductCard
+                id={p.id}
+                title={p.title}
+                category={p.category}
+                image={p.image}
+                imageHover={p.imageHover}
+                index={i}
+              />
+            </motion.div>
+          ))}
         </div>
 
         {/* Mobile RTL snap carousel */}
@@ -98,12 +83,39 @@ export default function ProductGrid() {
           className="md:hidden snap-carousel scrollbar-hide flex gap-4 overflow-x-auto -mx-6 px-6 pb-2"
           dir="rtl"
         >
-          {products.map((p) => (
-            <div key={p.title} className="shrink-0 w-[78vw] max-w-sm">
-              <ProductCard {...p} />
+          {visible.map((p, i) => (
+            <div key={p.id} className="shrink-0 w-[82vw] max-w-sm">
+              <ProductCard
+                id={p.id}
+                title={p.title}
+                category={p.category}
+                image={p.image}
+                imageHover={p.imageHover}
+                index={i}
+              />
             </div>
           ))}
         </div>
+
+        {hasMore && (
+          <div className="mt-8 lg:mt-12 flex flex-col items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowAll((s) => !s)}
+              className="group inline-flex items-center gap-2 min-h-[52px] px-10 rounded-sm bg-brand-gold text-brand-onEspresso font-semibold text-sm tracking-wide hover:bg-brand-goldHi transition-colors duration-200"
+            >
+              {showAll ? "הצגת פחות" : "הצגת עוד מוצרים"}
+              <ChevronDown
+                className={`size-4 transition-transform duration-300 ${
+                  showAll ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+            <p className="text-xs text-brand-boneDim tracking-wider">
+              מציג {visible.length} מתוך {products.length}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

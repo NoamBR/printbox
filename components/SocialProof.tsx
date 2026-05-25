@@ -1,28 +1,18 @@
 "use client";
 
+import { Quote } from "lucide-react";
 import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { Quote } from "lucide-react";
-import RevealOnScroll from "@/components/motion/RevealOnScroll";
 
-const clientLogos = [
-  "קפה שדרות",
-  "ברנדס סטודיו",
-  "אורבן בייקרי",
-  "טאיגר רוסטרי",
-  "פייני פוד",
-  "Lemon & Sage",
-  "מקסים בייטס",
-  "סלייס פיצריה",
-];
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const stats = [
-  { value: 500, suffix: "+", label: "עסקים פעילים" },
-  { value: 14, suffix: " ימים", label: "זמן הפקה ממוצע" },
-  { value: 98, suffix: "%", label: "חזרות הזמנה תוך שנה" },
+  { value: 500, prefix: "+", suffix: "", label: "עסקים פעילים" },
+  { value: 50, prefix: "", suffix: "+", label: "אפשרויות התאמה אישית" },
+  { value: 98, prefix: "", suffix: "%", label: "חזרות הזמנה תוך שנה" },
 ];
 
-function CountUp({ to, suffix }: { to: number; suffix: string }) {
+function CountUp({ to, prefix, suffix }: { to: number; prefix: string; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduce = useReducedMotion();
@@ -34,8 +24,8 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
       return;
     }
     const controls = animate(0, to, {
-      duration: 1.2,
-      ease: [0.22, 1, 0.36, 1],
+      duration: 1.4,
+      ease: EASE,
       onUpdate: (v) => setN(Math.round(v)),
     });
     return () => controls.stop();
@@ -43,6 +33,7 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
 
   return (
     <span ref={ref}>
+      {prefix}
       {n}
       {suffix}
     </span>
@@ -50,96 +41,89 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
 }
 
 export default function SocialProof() {
+  const reduce = useReducedMotion();
   return (
-    <section className="bg-brand-cream" aria-labelledby="social-proof-heading">
-      <div className="max-w-container mx-auto px-6 lg:px-10 py-20 lg:py-28">
-        <RevealOnScroll>
-          <p className="text-sm font-semibold text-brand-amber uppercase tracking-wide mb-3 text-right">
-            עסקים שכבר עובדים איתנו
+    <section
+      className="relative bg-brand-espresso text-brand-onEspresso overflow-hidden"
+      aria-labelledby="social-proof-heading"
+    >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 20% 30%, rgb(var(--c-gold) / 0.10) 0%, transparent 60%), radial-gradient(60% 50% at 80% 90%, rgb(var(--c-gold) / 0.06) 0%, transparent 60%)",
+        }}
+      />
+      <span
+        aria-hidden="true"
+        className="hidden lg:block absolute top-14 left-12 font-display italic text-brand-onEspresso/10 leading-none select-none pointer-events-none"
+        style={{ fontSize: "clamp(120px, 18vw, 260px)" }}
+      >
+        04
+      </span>
+
+      <div className="relative max-w-container mx-auto px-6 lg:px-10 py-12 lg:py-20">
+        <motion.div
+          initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: EASE }}
+          className="text-right mb-8 lg:mb-12 max-w-3xl"
+        >
+          <p className="text-[11px] font-medium tracking-[0.3em] text-brand-gold uppercase mb-3">
+            <span className="font-display italic me-2">Trust</span>· עסקים שעובדים איתנו
           </p>
           <h2
             id="social-proof-heading"
-            className="text-[clamp(28px,4vw,40px)] font-bold text-brand-espresso leading-tight text-right max-w-2xl mb-10 lg:mb-14"
+            className="font-serif font-medium text-[clamp(28px,4.5vw,64px)] text-brand-onEspresso leading-[1.05]"
           >
-            ‎+500 מותגים נבחרו ב-PrintBox
+            <span className="italic font-display font-light text-brand-gold">+500</span>{" "}
+            מותגים נבחרו ב-PrintBox
           </h2>
-        </RevealOnScroll>
-
-        {/* Logo marquee */}
-        <div
-          className="relative overflow-hidden mask-fade py-6 mb-16 lg:mb-20"
-          aria-label="לקוחות שלנו"
-          style={{
-            maskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-            WebkitMaskImage:
-              "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
-          }}
-        >
-          <div className="flex gap-12 lg:gap-16 animate-marquee hover:[animation-play-state:paused] w-max">
-            {[...clientLogos, ...clientLogos].map((name, i) => (
-              <div
-                key={i}
-                className="shrink-0 text-2xl lg:text-3xl font-bold text-brand-muted/70 hover:text-brand-kraft transition-colors duration-200 select-none whitespace-nowrap"
-              >
-                {name}
-              </div>
-            ))}
-          </div>
-        </div>
+        </motion.div>
 
         {/* Testimonial */}
-        <RevealOnScroll>
-          <figure className="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
-            <Quote
-              className="size-10 text-brand-amber/40 mx-auto mb-4 rtl:-scale-x-100"
-              strokeWidth={1.5}
-            />
-            <blockquote className="text-xl lg:text-2xl text-brand-espresso leading-relaxed font-medium">
-              &ldquo;עברנו ל-PrintBox אחרי שבע שנים עם ספק אחר. הזמן מהזמנה
-              למשלוח התקצר בחצי, והאיכות פשוט אחרת. הלקוחות שלנו מבחינים
-              בכוסות.&rdquo;
-            </blockquote>
-            <figcaption className="mt-5 text-sm text-brand-muted">
-              <span className="font-bold text-brand-ink">מיכל לוי</span>
-              {" — "}מנכ&quot;לית, קפה שדרות
-            </figcaption>
-          </figure>
-        </RevealOnScroll>
-
-        {/* Stats */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={{
-            hidden: {},
-            show: { transition: { staggerChildren: 0.1 } },
-          }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+        <motion.figure
+          initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.55, ease: EASE }}
+          className="max-w-4xl mx-auto text-center mb-10 lg:mb-16"
         >
-          {stats.map((s) => (
+          <Quote className="size-10 text-brand-gold/50 mx-auto mb-4 rtl:-scale-x-100" strokeWidth={1.2} />
+          <blockquote className="font-display italic font-light text-[clamp(28px,3vw,44px)] text-brand-onEspresso leading-[1.2]">
+            עברנו ל-PrintBox אחרי שבע שנים עם ספק אחר. האיכות והליווי המקצועי{" "}
+            <span className="text-brand-gold not-italic font-serif">פשוט אחרים</span>, והלקוחות שלנו מבחינים בזה מיד.
+          </blockquote>
+          <figcaption className="mt-6 text-sm text-brand-onEspressoDim tracking-wide">
+            <span className="text-brand-onEspresso font-semibold">מיכל לוי</span>
+            {" — "}מנכ&quot;לית, קפה שדרות
+          </figcaption>
+        </motion.figure>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-10">
+          {stats.map((s, i) => (
             <motion.div
               key={s.label}
-              variants={{
-                hidden: { opacity: 0, y: 16 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-                },
-              }}
-              className="text-center rounded-2xl bg-white border border-brand-line shadow-soft p-8"
+              initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease: EASE, delay: i * 0.1 }}
+              className="text-center px-4"
             >
-              <div className="text-4xl lg:text-5xl font-extrabold text-brand-kraft mb-2 tabular-nums">
-                <CountUp to={s.value} suffix={s.suffix} />
+              <div
+                className="font-display italic font-light text-brand-gold mb-2 tabular-nums leading-[0.9]"
+                style={{ fontSize: "clamp(64px, 9vw, 132px)" }}
+              >
+                <CountUp to={s.value} prefix={s.prefix} suffix={s.suffix} />
               </div>
-              <div className="text-sm text-brand-ink/70 font-medium">
+              <div className="text-sm text-brand-onEspressoDim font-medium tracking-[0.15em] uppercase">
                 {s.label}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 140" role="img" aria-label="PrintBox">
+  <title>PrintBox</title>
+  <defs>
+    <style>
+      .pb-word {
+        font-family: "Assistant", "Inter", "SF Pro Display", "Segoe UI", system-ui, -apple-system, sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.028em;
+      }
+    </style>
+  </defs>
+  <text x="320" y="95" text-anchor="middle" font-size="98" class="pb-word" fill="rgb(244,241,234)">PrintBox</text>
+  <circle cx="498" cy="55" r="4.5" fill="rgb(201,165,90)"/>
+</svg>

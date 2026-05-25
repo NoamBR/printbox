@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PrintBox — Logo Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#EEE7D4;
+    --bone-soft:#FAF7F0;
+    --ink:#282018;
+    --gold:#C9A55A;
+    --espresso:#0E0E0E;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Assistant", system-ui, sans-serif;
+    background:var(--bone-soft);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  header{
+    padding:72px 48px 40px;
+    border-bottom:1px solid rgba(40,32,24,0.10);
+  }
+  h1{
+    font-family:"Assistant", system-ui, sans-serif;
+    font-weight:800;
+    letter-spacing:-0.025em;
+    font-size:54px;
+    margin:0 0 10px;
+  }
+  .sub{
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-style:italic;
+    color:rgba(40,32,24,0.55);
+    font-size:18px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+  }
+  main{ display:grid; grid-template-columns:1fr; gap:0; }
+  .panel{
+    padding:72px 48px;
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:48px;
+    align-items:center;
+    border-bottom:1px solid rgba(40,32,24,0.08);
+  }
+  .meta{ font-size:11px; letter-spacing:0.24em; text-transform:uppercase; color:rgba(40,32,24,0.55); }
+  .meta b{
+    display:block;
+    font-family:"Assistant", system-ui, sans-serif;
+    font-weight:700;
+    text-transform:none;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    font-size:22px;
+    margin-bottom:8px;
+  }
+  .stage{
+    background:var(--bone);
+    border:1px solid rgba(40,32,24,0.08);
+    padding:64px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:260px;
+    border-radius:4px;
+  }
+  .stage.dark{ background:var(--espresso); border-color:rgba(255,255,255,0.06); }
+  .stage img{ max-width:100%; height:auto; display:block; }
+  .row{ display:flex; gap:48px; align-items:center; flex-wrap:wrap; justify-content:center; }
+  .swatch{ text-align:center; }
+  .swatch img{ display:block; margin:0 auto; }
+  .swatch span{ display:block; margin-top:14px; font-size:11px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(40,32,24,0.55); }
+  footer{
+    padding:40px 48px 72px;
+    font-family:"Cormorant Garamond", Georgia, serif;
+    font-style:italic;
+    color:rgba(40,32,24,0.55);
+    font-size:14px;
+    letter-spacing:0.14em;
+  }
+  @media (max-width: 880px){
+    .panel{ grid-template-columns:1fr; padding:48px 24px; }
+    .stage{ padding:48px 24px; }
+    header{ padding:48px 24px 20px; }
+    footer{ padding:24px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>PrintBox</h1>
+  <div class="sub">— Logo Suite · v2 · Geometric —</div>
+</header>
+
+<main>
+
+  <section class="panel">
+    <div class="meta"><b>Primary Mark</b>Custom geometric PB monogram</div>
+    <div class="stage">
+      <img src="printbox-mark.svg" alt="PrintBox monogram" style="width:200px;height:200px" />
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="meta"><b>Mark — Boxed</b>The literal PrintBox · stamp / seal use</div>
+    <div class="stage">
+      <img src="printbox-mark-boxed.svg" alt="PrintBox boxed monogram" style="width:200px;height:200px" />
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="meta"><b>Mark — Inverse</b>Reversed on espresso · with gold print accent</div>
+    <div class="stage dark">
+      <img src="printbox-mark-inverse.svg" alt="PrintBox monogram inverse" style="width:200px;height:200px" />
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="meta"><b>Wordmark</b>Bold modern sans · Assistant 800</div>
+    <div class="stage">
+      <img src="printbox-wordmark.svg" alt="PrintBox wordmark" style="max-width:520px" />
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="meta"><b>Lockup</b>Mark + wordmark · headers, business cards, footers</div>
+    <div class="stage">
+      <img src="printbox-lockup.svg" alt="PrintBox lockup" style="max-width:640px" />
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="meta"><b>Wordmark — Inverse</b>For dark sections</div>
+    <div class="stage dark">
+      <img src="printbox-wordmark-light.svg" alt="PrintBox wordmark light" style="max-width:520px" />
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="meta"><b>Favicon</b>Browser tab · 16 / 32 / 64 / 128 px</div>
+    <div class="stage">
+      <div class="row">
+        <div class="swatch"><img src="favicon.svg" alt="favicon 128" style="width:128px;height:128px"/><span>128</span></div>
+        <div class="swatch"><img src="favicon.svg" alt="favicon 64" style="width:64px;height:64px"/><span>64</span></div>
+        <div class="swatch"><img src="favicon.svg" alt="favicon 32" style="width:32px;height:32px"/><span>32</span></div>
+        <div class="swatch"><img src="favicon.svg" alt="favicon 16" style="width:16px;height:16px"/><span>16</span></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  PB monogram: custom paths, geometric construction · Wordmark: Assistant 800, tracking −0.028em · Espresso #282018 on Bone #EEE7D4 · Gold accent #C9A55A
+</footer>
+</body>
+</html>

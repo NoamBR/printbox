@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פרינטבוקס · אריזות מותאמות אישית למיתוג מקצועי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE3;
+    --bg-soft: #EFE9DD;
+    --surface: #FAF6EE;
+    --line: #DCD3C0;
+    --ink: #1B1B1B;
+    --ink-soft: #555149;
+    --ink-mute: #8A8273;
+    --accent: #5B6B47;
+    --accent-2: #C9A55A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Heebo', 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    direction: rtl;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+
+  /* ---------- NAV ---------- */
+  nav.top {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(242,237,227,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 48px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav.top .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 700; font-size: 20px; letter-spacing: 0.02em;
+  }
+  nav.top .brand .dot {
+    width: 12px; height: 12px; background: var(--accent-2);
+    border-radius: 50%;
+  }
+  nav.top .links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  nav.top .links a:hover { color: var(--ink); }
+  nav.top .cta {
+    background: var(--ink); color: var(--bg);
+    padding: 10px 22px; border-radius: 999px;
+    font-size: 13px; font-weight: 600;
+    transition: background 0.2s;
+  }
+  nav.top .cta:hover { background: var(--accent); }
+
+  /* ---------- HERO ---------- */
+  section.hero {
+    padding: 96px 48px 80px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero .eyebrow {
+    font-size: 13px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', 'Heebo', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 500; line-height: 1.1;
+    margin-bottom: 28px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--accent-2);
+    font-family: 'Playfair Display', serif;
+  }
+  .hero .lede {
+    font-size: 19px; line-height: 1.7;
+    max-width: 760px; margin: 0 auto 40px;
+    color: var(--ink-soft);
+  }
+  .hero .meta-strip {
+    display: flex; gap: 48px; justify-content: center;
+    flex-wrap: wrap; margin-top: 48px;
+    padding-top: 40px; border-top: 1px solid var(--line);
+  }
+  .hero .meta-strip .stat {
+    text-align: center;
+  }
+  .hero .meta-strip .stat .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px; font-weight: 500; color: var(--accent);
+    display: block; margin-bottom: 4px;
+  }
+  .hero .meta-strip .stat .lbl {
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: 0.15em; text-transform: uppercase;
+  }
+
+  /* ---------- VALUE PROPS ---------- */
+  section.values {
+    padding: 80px 48px;
+    background: var(--surface);
+  }
+  .values-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+  }
+  .value-card {
+    text-align: right;
+    padding: 24px 0;
+  }
+  .value-card .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px; color: var(--accent-2);
+    letter-spacing: 0.3em; margin-bottom: 12px;
+  }
+  .value-card h3 {
+    font-size: 19px; font-weight: 700;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .value-card p {
+    font-size: 14px; color: var(--ink-soft); line-height: 1.7;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head {
+    max-width: 1320px; margin: 0 auto 48px;
+    padding: 0 48px;
+    text-align: right;
+  }
+  .section-head .eyebrow {
+    font-size: 12px; letter-spacing: 0.25em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', 'Heebo', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 500; line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .section-head .sub {
+    font-size: 16px; color: var(--ink-soft);
+    max-width: 720px; line-height: 1.7;
+  }
+
+  /* ---------- BRAND WORLDS ---------- */
+  section.brands {
+    padding: 96px 0 80px;
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+  }
+  .brands-grid {
+    max-width: 1320px; margin: 0 auto;
+    padding: 0 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+  .brand-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .brand-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+  .brand-card .img { aspect-ratio: 1; overflow: hidden; }
+  .brand-card .img img { width: 100%; height: 100%; object-fit: cover; }
+  .brand-card .info { padding: 18px; }
+  .brand-card .info h4 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 6px; letter-spacing: 0.02em;
+  }
+  .brand-card .info p {
+    font-size: 13px; color: var(--ink-mute);
+    line-height: 1.5;
+  }
+
+  /* ---------- CATEGORIES + GRID ---------- */
+  section.catalog {
+    padding: 96px 0;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+  }
+  .category-block {
+    max-width: 1320px;
+    margin: 0 auto 80px;
+    padding: 0 48px;
+  }
+  .category-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--ink);
+  }
+  .category-head h3 {
+    font-family: 'Playfair Display', 'Heebo', serif;
+    font-size: 30px; font-weight: 500;
+    color: var(--ink);
+  }
+  .category-head .count {
+    font-size: 12px; color: var(--ink-mute);
+    letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .product {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .product:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: 0 16px 40px rgba(91,107,71,0.12);
+  }
+  .product .img-wrap {
+    aspect-ratio: 1;
+    background: var(--bg);
+    overflow: hidden;
+    position: relative;
+  }
+  .product .img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .product .badge {
+    position: absolute; top: 12px; left: 12px;
+    background: rgba(27,27,27,0.85); color: var(--bg);
+    font-size: 10px; letter-spacing: 0.15em;
+    padding: 4px 9px; border-radius: 3px;
+    font-family: 'Heebo', monospace;
+    font-weight: 600;
+  }
+  .product .info {
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .product .info h4 {
+    font-size: 17px; font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .product .info .desc {
+    font-size: 13px; color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 14px;
+    flex: 1;
+  }
+  .product .meta-row {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+  }
+  .product .meta-row .chip {
+    font-size: 10px;
+    color: var(--ink-mute);
+    background: var(--bg-soft);
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+  }
+
+  /* ---------- FINISHES ---------- */
+  section.finishes {
+    padding: 96px 48px;
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .finishes-inner {
+    max-width: 1200px; margin: 0 auto;
+  }
+  .finishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .finish-card {
+    border-right: 2px solid var(--accent-2);
+    padding-right: 18px;
+  }
+  .finish-card h4 {
+    font-size: 16px; font-weight: 700; margin-bottom: 8px;
+    color: var(--accent-2);
+  }
+  .finish-card p {
+    font-size: 14px; color: rgba(242,237,227,0.7); line-height: 1.6;
+  }
+
+  /* ---------- PROCESS ---------- */
+  section.process {
+    padding: 96px 48px;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .process-steps {
+    max-width: 1200px; margin: 56px auto 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    position: relative;
+  }
+  .step {
+    text-align: right;
+    padding: 24px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    position: relative;
+  }
+  .step .num-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    color: var(--accent-2);
+    line-height: 1;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+  .step h4 {
+    font-size: 18px; font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-size: 13.5px; color: var(--ink-soft); line-height: 1.65;
+  }
+
+  /* ---------- CTA ---------- */
+  section.cta {
+    padding: 120px 48px;
+    background: linear-gradient(135deg, var(--accent) 0%, #4a5739 100%);
+    color: var(--bg);
+    text-align: center;
+  }
+  .cta h2 {
+    font-family: 'Playfair Display', 'Heebo', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 500;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .cta h2 em {
+    font-style: italic; color: var(--accent-2);
+  }
+  .cta p {
+    font-size: 18px; line-height: 1.7;
+    max-width: 640px; margin: 0 auto 40px;
+    color: rgba(242,237,227,0.85);
+  }
+  .cta-buttons {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .cta .btn-primary, .cta .btn-secondary {
+    padding: 16px 36px; border-radius: 999px;
+    font-size: 15px; font-weight: 700;
+    transition: transform 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .cta .btn-primary {
+    background: var(--bg); color: var(--ink);
+  }
+  .cta .btn-primary:hover { background: var(--accent-2); color: var(--ink); transform: translateY(-2px); }
+  .cta .btn-secondary {
+    background: transparent; color: var(--bg);
+    border: 2px solid rgba(242,237,227,0.4);
+  }
+  .cta .btn-secondary:hover { border-color: var(--bg); transform: translateY(-2px); }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    background: var(--ink); color: rgba(242,237,227,0.7);
+    padding: 64px 48px 32px;
+  }
+  .footer-inner {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  footer h5 {
+    color: var(--bg); font-size: 13px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    margin-bottom: 16px; font-weight: 700;
+  }
+  footer ul { list-style: none; }
+  footer ul li { padding: 5px 0; font-size: 14px; }
+  footer ul li a:hover { color: var(--accent-2); }
+  footer .brand-block .brand {
+    display: flex; align-items: center; gap: 12px;
+    font-weight: 700; font-size: 22px;
+    color: var(--bg); margin-bottom: 12px;
+  }
+  footer .brand-block .brand .dot {
+    width: 12px; height: 12px;
+    background: var(--accent-2); border-radius: 50%;
+  }
+  footer .brand-block p { font-size: 14px; max-width: 380px; line-height: 1.7; }
+  footer .legal {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(242,237,227,0.1);
+    padding-top: 24px; margin-top: 32px;
+    display: flex; justify-content: space-between;
+    font-size: 12px; color: rgba(242,237,227,0.4);
+  }
+
+  /* ---------- VARIATION SWITCHER ---------- */
+  .variations {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .var-thumb {
+    width: 38px; height: 38px;
+    padding: 0;
+    background: var(--bg);
+    border: 2px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    direction: ltr;
+  }
+  .var-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .var-thumb:hover {
+    transform: translateY(-2px);
+    border-color: var(--ink);
+  }
+  .var-thumb.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(91,107,71,0.18);
+  }
+  .var-thumb .tip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    right: 50%; transform: translateX(50%);
+    background: var(--ink); color: var(--bg);
+    font-size: 10px; letter-spacing: 0.1em;
+    padding: 4px 8px; border-radius: 3px;
+    white-space: nowrap;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.15s;
+    direction: ltr;
+    font-weight: 600;
+  }
+  .var-thumb:hover .tip { opacity: 1; }
+  .var-label {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .var-active-name {
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    nav.top { padding: 14px 20px; }
+    nav.top .links { display: none; }
+    section.hero { padding: 64px 20px 56px; }
+    section.values, .section-head, .category-block, .finishes-inner, .process-steps, footer .footer-inner { padding-right: 20px !important; padding-left: 20px !important; }
+    .category-block { padding: 0 20px; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOP NAV ============ -->
+<nav class="top">
+  <div class="brand">
+    <span class="dot"></span>
+    <span>פרינטבוקס</span>
+  </div>
+  <div class="links">
+    <a href="#brands">עולמות מיתוג</a>
+    <a href="#catalog">קטלוג</a>
+    <a href="#finishes">חומרים וגימורים</a>
+    <a href="#process">איך זה עובד</a>
+    <a href="#cta">צרו קשר</a>
+  </div>
+  <a href="#cta" class="cta">קבלו הצעת מחיר</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="eyebrow">קטלוג B2B · גרסה 1.0</div>
+  <h1>אריזות שהופכות<br>למשהו <em>שזוכרים</em></h1>
+  <p class="lede">
+    בפרינטבוקס אנחנו לא מספקים אריזות. אנחנו מספקים את הרגע שבו הלקוח שלכם פותח את ההזמנה.
+    28 סוגי אריזות בהתאמה אישית, 6 עולמות עיצוב לדוגמא, ושירות מקצה לקצה לעסקים בתחום המזון, הקפה, הקונדיטוריה והקמעונאות.
+  </p>
+  <a href="#catalog" class="cta" style="background:var(--ink);color:var(--bg);padding:14px 32px;display:inline-block;border-radius:999px;font-weight:700;font-size:14px;">צאו לקטלוג ←</a>
+
+  <div class="meta-strip">
+    <div class="stat"><span class="num">28</span><span class="lbl">סוגי אריזות</span></div>
+    <div class="stat"><span class="num">6</span><span class="lbl">עולמות עיצוב</span></div>
+    <div class="stat"><span class="num">250+</span><span class="lbl">מינימום הזמנה</span></div>
+    <div class="stat"><span class="num">7-14</span><span class="lbl">ימי ייצור</span></div>
+  </div>
+</section>
+
+<!-- ============ VALUE PROPS ============ -->
+<section class="values">
+  <div class="values-grid">
+    <div class="value-card">
+      <div class="num">01</div>
+      <h3>עיצוב מקצועי בבית</h3>
+      <p>צוות מעצבים פנימי שמתאים את המיתוג שלכם לכל פורמט אריזה - מהמשטח הקטן ביותר ועד לקופסת המתנה היוקרתית. בלי להתפשר על קוהרנטיות חזותית.</p>
+    </div>
+    <div class="value-card">
+      <div class="num">02</div>
+      <h3>הדפסה ברמת פרימיום</h3>
+      <p>הדפסת CMYK איכותית, פויל זהב וכסף, ספוט UV, הבלטות, חיתוכים מיוחדים וציפויים עמידים לשומן ולחות. כל מה שצריך כדי שהאריזה תרגיש יקרה.</p>
+    </div>
+    <div class="value-card">
+      <div class="num">03</div>
+      <h3>חומרים מאושרי מזון</h3>
+      <p>כל המוצרים שלנו מיוצרים מחומרים מאושרי מזון, עם ציפויים מתאימים לחום, קור, שומן ולחות. אופציה לתעודות FSC ו-PLA לאריזות אקולוגיות.</p>
+    </div>
+    <div class="value-card">
+      <div class="num">04</div>
+      <h3>MOQ נוח ושירות אישי</h3>
+      <p>מינימום הזמנה החל מ-250 יחידות לכרטיסי ביקור ו-500 יחידות לקופסאות. מנהל תיק לקוח אישי שמלווה אתכם משלב העיצוב ועד למשלוח האחרון.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAND WORLDS ============ -->
+<section class="brands" id="brands">
+  <div class="section-head">
+    <div class="eyebrow">6 עולמות מיתוג לדוגמא</div>
+    <h2>איך נראית האריזה <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent-2);">שלכם</em>?</h2>
+    <p class="sub">
+      בחרנו 6 גישות עיצוב מובחנות שמדגימות את טווח היכולת שלנו - מהבורגר הרחובי הבולט ועד לקפה הארטיזנלי המינימליסטי.
+      כל מוצר בקטלוג ניתן להפקה בכל אחת מהגישות, או בעיצוב מותאם אישית שאתם מביאים.
+    </p>
+  </div>
+
+  <div class="brands-grid">
+    <div class="brand-card">
+      <div class="img"><img src="renders/PB-001_v1.png" alt="Ruby & Bun"></div>
+      <div class="info"><h4>RUBY & BUN</h4><p>בורגר רחובי נועז. אדום דובדבן + שחור + שמנת. טיפוגרפיה מאסיבית, ספוט UV.</p></div>
+    </div>
+    <div class="brand-card">
+      <div class="img"><img src="renders/PB-015_v2.png" alt="Olive Grove"></div>
+      <div class="info"><h4>OLIVE GROVE</h4><p>וולנס וקונספט צמחוני. ירוק מרווה + שנהב + טרקוטה. סריף עדין, פויל זהב, איור בוטני.</p></div>
+    </div>
+    <div class="brand-card">
+      <div class="img"><img src="renders/PB-026_v3.png" alt="Tokyo Lane"></div>
+      <div class="info"><h4>TŌKYO LANE</h4><p>אסיאתי-פיוז'ן מודרני. כחול נייבי + טנגרין + לבן. סאן-מארק גיאומטרי, רוח סקרין-פרינט.</p></div>
+    </div>
+    <div class="brand-card">
+      <div class="img"><img src="renders/PB-019_v4.png" alt="BIGM"></div>
+      <div class="info"><h4>BIGM</h4><p>מזון מהיר אנרגטי. צהוב בוהק + שחור. CMYK רווי, באדג' M מסיבי, אסתטיקת רחוב.</p></div>
+    </div>
+    <div class="brand-card">
+      <div class="img"><img src="renders/PB-018_v5.png" alt="Crave Lab"></div>
+      <div class="info"><h4>CRAVE LAB</h4><p>קפה רטרו אמריקאי. חלודה + פויל זהב. באדג' עגול, מוטיב טפטופי, וייב דיינר וינטג'.</p></div>
+    </div>
+    <div class="brand-card">
+      <div class="img"><img src="renders/PB-014_v6.png" alt="Green Harbor"></div>
+      <div class="info"><h4>GREEN HARBOR</h4><p>בית קפה ארטיזנלי. ירוק יער + שנהב + זהב רך. אמבלם עלה-G, סנס מודרני, רוח קפה רגוע.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATALOG ============ -->
+<section class="catalog" id="catalog">
+  <div class="section-head">
+    <div class="eyebrow">קטלוג מלא · 28 סוגי אריזות</div>
+    <h2>הקטלוג <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent-2);">המלא</em></h2>
+    <p class="sub">
+      28 סוגי אריזות מקצועיות מחולקות ל-6 קטגוריות. כל אריזה ניתנת להפקה בעיצוב המותאם למותג שלכם, או באחת מ-6 גישות העיצוב לדוגמא.
+    </p>
+  </div>
+
+  <!-- Category: Burger & Fast Food -->
+  <div class="category-block">
+    <div class="category-head">
+      <h3>אריזות בורגר ומזון מהיר</h3>
+      <span class="count">4 פריטים</span>
+    </div>
+    <div class="products-grid">
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-001</span><img src="renders/PB-001_v1.png" alt="קופסת המבורגר צדפה"></div>
+        <div class="info">
+          <h4>קופסת המבורגר צדפה</h4>
+          <p class="desc">קופסת המבורגר בעיצוב צדפה (Clamshell) מקרטון מצופה איכותי. אריזה יציבה, שומרת חום ומאפשרת הדפסה מלאה והטבעות פויל.</p>
+          <div class="meta-row"><span class="chip">350 GSM</span><span class="chip">120×120×80mm</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-002</span><img src="renders/PB-002_v2.png" alt="קופסת המבורגר קראפט גלי"></div>
+        <div class="info">
+          <h4>קופסת המבורגר קראפט גלי</h4>
+          <p class="desc">קרטון גלי קראפט עם מבנה מחוזק ופתיחה מלמעלה. בידוד תרמי מעולה ושטח הדפסה רחב לקונספטים של בורגר גורמה.</p>
+          <div class="meta-row"><span class="chip">B-Flute</span><span class="chip">140×140×90mm</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-019</span><img src="renders/PB-019_v1.png" alt="קופסת ארוחה גייבל"></div>
+        <div class="info">
+          <h4>קופסת ארוחה Gable</h4>
+          <p class="desc">הקופסה הקלאסית עם ידית למעלה - מושלמת לארוחות עוף, מנות ילדים, חבילות אירוע ומשלוחי מסיבה.</p>
+          <div class="meta-row"><span class="chip">ידית מובנית</span><span class="chip">350 GSM</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-020</span><img src="renders/PB-020_v4.png" alt="קופסת קומבו עוף"></div>
+        <div class="info">
+          <h4>קופסת קומבו עוף</h4>
+          <p class="desc">קופסה מלבנית עם חלון חיתוך מיוחד שמשמש גם כפתיחה וגם כצוהר הצצה - לארוחות משפחתיות וקומבו.</p>
+          <div class="meta-row"><span class="chip">חלון מיוחד</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Category: Beverage -->
+  <div class="category-block">
+    <div class="category-head">
+      <h3>אריזות משקאות וכוסות</h3>
+      <span class="count">5 פריטים</span>
+    </div>
+    <div class="products-grid">
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-003</span><img src="renders/PB-003_v6.png" alt="כוס משקה קר מנייר"></div>
+        <div class="info">
+          <h4>כוס משקה קר 16oz – מכסה שטוח</h4>
+          <p class="desc">כוס נייר 473 מ"ל מצופה PE עם מכסה פלסטיק שטוח לשתייה. שטח הדפסה 360° מלא לחוויית מיתוג כוללת.</p>
+          <div class="meta-row"><span class="chip">473ml</span><span class="chip">PE Coated</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-009</span><img src="renders/PB-009_v2.png" alt="כוס U מנייר"></div>
+        <div class="info">
+          <h4>כוס בצורת U מנייר</h4>
+          <p class="desc">כוס נייר טיוליפ מתרחבת לקינוחים, שייקים, גלידה ויוגורט קפוא. צורת U אופנתית עם מכסה שטוח.</p>
+          <div class="meta-row"><span class="chip">תאים תרמיים</span><span class="chip">פויל</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-010</span><img src="renders/PB-010_v6.png" alt="כוס U פלסטיק"></div>
+        <div class="info">
+          <h4>כוס U פלסטיק שקוף</h4>
+          <p class="desc">גרסת PET שקופה של כוס ה-U - מאפשרת תצוגת הקינוח/המשקה דרך הכוס. ציור על פס סביב הכוס.</p>
+          <div class="meta-row"><span class="chip">PET שקוף</span><span class="chip">מכסה שטוח</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-011</span><img src="renders/PB-011_v4.png" alt="כוס פלסטיק שקוף קלאסית"></div>
+        <div class="info">
+          <h4>כוס פלסטיק שקוף קלאסית</h4>
+          <p class="desc">כוס PET שקופה גלילית ל-Iced Coffee, מים, מיצים וקוקטיילים. ההדפסה על פס היקפי, התוכן נראה דרך הכוס.</p>
+          <div class="meta-row"><span class="chip">16oz</span><span class="chip">PET</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-016</span><img src="renders/PB-016_v5.png" alt="מגש לכוסות"></div>
+        <div class="info">
+          <h4>מגש נשיאה ל-3 כוסות</h4>
+          <p class="desc">מגש קרטון יציב עם 3 חורי הצבה לכוסות take-away. משטחי הדפסה רחבים בצדדים ובחזית - שטח מיתוג מהלך-רחוב.</p>
+          <div class="meta-row"><span class="chip">3 חורים</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Category: Prepared Food -->
+  <div class="category-block">
+    <div class="category-head">
+      <h3>אריזות מזון מוכן</h3>
+      <span class="count">7 פריטים</span>
+    </div>
+    <div class="products-grid">
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-005</span><img src="renders/PB-005_v6.png" alt="קופסת ארוחה מרובעת"></div>
+        <div class="info">
+          <h4>קופסת ארוחה מרובעת</h4>
+          <p class="desc">קופסה דו-חלקית: בסיס עמוק וכיסוי נפרד. אידיאלית לקומבו, מנות שף, ארוחות מנהלים וקייטרינג עסקי.</p>
+          <div class="meta-row"><span class="chip">350 GSM</span><span class="chip">180×180×75mm</span><span class="chip">ניתנת לערימה</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-006</span><img src="renders/PB-006_v3.png" alt="סקופ צ'יפס"></div>
+        <div class="info">
+          <h4>סקופ צ'יפס וחטיפים</h4>
+          <p class="desc">כוס סקופ עם פתח רחב להגשה אטרקטיבית. עמידה לשומן עם שטח הדפסה בולט - בלת-נשכחת על המגש.</p>
+          <div class="meta-row"><span class="chip">עמיד שומן</span><span class="chip">150g</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-017</span><img src="renders/PB-017_v6.png" alt="מגש סכו״ם"></div>
+        <div class="info">
+          <h4>מגש סכו"ם עם תכולה</h4>
+          <p class="desc">מגש דליברי לסט סכו"ם מלא - מזלג, כף וסכין במתכת מאט. שטח הדפסה גמיש בחזית ובדפנות.</p>
+          <div class="meta-row"><span class="chip">סכ"ום מאט</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-022</span><img src="renders/PB-022_v5.png" alt="מגש סכו״ם ריק"></div>
+        <div class="info">
+          <h4>מגש סכו"ם – ריק (לקטלוג)</h4>
+          <p class="desc">אותו מגש דליברי, צילום נקי ללא תכולה - לתצוגת קטלוג, חוברות מוצר ועבודות גרפיקה.</p>
+          <div class="meta-row"><span class="chip">ריק</span><span class="chip">פרופיל דק</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-027</span><img src="renders/PB-027_v1.png" alt="קערת סלט/פוקה"></div>
+        <div class="info">
+          <h4>קערת סלט / פוקה / פסטה</h4>
+          <p class="desc">קערת נייר עגולה עם מכסה כיפה PET נפרד. לסלטים, פוקה, פסטות, מרקים ומנות שף - שטח הדפסה רחב סביב הקערה.</p>
+          <div class="meta-row"><span class="chip">מכסה כיפה</span><span class="chip">PET</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-023</span><img src="renders/PB-023_v4.png" alt="קופסת פיצה משולשת"></div>
+        <div class="info">
+          <h4>קופסת פיצה משולשת</h4>
+          <p class="desc">קופסה משולשת לפרוסת פיצה בודדת - חיתוך ייחודי שבולט בכל קמפיין take-away. פתוח שטוח לאריזה יעילה.</p>
+          <div class="meta-row"><span class="chip">פרוסה בודדת</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-024</span><img src="renders/PB-024_v2.png" alt="קופסת פיצה מרובעת"></div>
+        <div class="info">
+          <h4>קופסת פיצה מרובעת (Classic)</h4>
+          <p class="desc">הקופסה הקלאסית מקרטון גלי B-Flute. שטח הדפסה מלא במכסה ולוגו על דפנות - שלוחה למשלוחים והגעה הביתה.</p>
+          <div class="meta-row"><span class="chip">B-Flute</span><span class="chip">9"/10"/12"</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Category: Bakery & Desserts -->
+  <div class="category-block">
+    <div class="category-head">
+      <h3>אריזות מאפים, קינוחים וקפה</h3>
+      <span class="count">4 פריטים</span>
+    </div>
+    <div class="products-grid">
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-014</span><img src="renders/PB-014_v6.png" alt="קופסת דונאטס"></div>
+        <div class="info">
+          <h4>קופסת דונאטס / מאפים</h4>
+          <p class="desc">קופסת הגשה רדודה עם מכסה צירי. החוץ בצבע המותג, הפנים מודפס בפטרן דקורטיבי - חשיפת המיתוג ברגע הפתיחה.</p>
+          <div class="meta-row"><span class="chip">פטרן פנימי</span><span class="chip">4 יחידות</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-021</span><img src="renders/PB-021_v6.png" alt="קופסת דונאטס מחולקת"></div>
+        <div class="info">
+          <h4>קופסת דונאטס מחולקת ל-6 תאים</h4>
+          <p class="desc">גרסה גדולה יותר עם מחיצות פנימיות ל-6 דונאטס נפרדים. עיצוב פסים בחוץ + איור בוטני שובב במכסה.</p>
+          <div class="meta-row"><span class="chip">6 תאים</span><span class="chip">מחיצות פנימיות</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-015</span><img src="renders/PB-015_v6.png" alt="שקית לחם"></div>
+        <div class="info">
+          <h4>שקית לחם מאפייה (Tin-Tie)</h4>
+          <p class="desc">שקית מאפייה עומדת עם סגירת חוט-מתכת בראש וחלון שקוף במרכז - הלחם נראה דרך החלון, המיתוג בולט במעטפת.</p>
+          <div class="meta-row"><span class="chip">חלון שקוף</span><span class="chip">Tin-Tie</span><span class="chip">MOQ 500</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-028</span><img src="renders/PB-028_v2.png" alt="כוס גלידה פינט"></div>
+        <div class="info">
+          <h4>כוס גלידה פינט (1PINT / 330g)</h4>
+          <p class="desc">קונטיינר נייר גלילי מתרחב עם מכסה פלסטיק לבן הדוק. לגלידה, פרוזן יוגורט, גלאטו וקינוחים קפואים.</p>
+          <div class="meta-row"><span class="chip">1 PINT</span><span class="chip">330g</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Category: Specialty & Print -->
+  <div class="category-block">
+    <div class="category-head">
+      <h3>אריזות מיוחדות וקרטון מודפס</h3>
+      <span class="count">6 פריטים</span>
+    </div>
+    <div class="products-grid">
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-004</span><img src="renders/PB-004_v5.png" alt="שקית נשיאה SOS"></div>
+        <div class="info">
+          <h4>שקית נשיאה SOS גדולה</h4>
+          <p class="desc">שקית נייר קראפט יציבה עם ידיות שטוחות ותחתית שטוחה - כלי מיתוג מהלך-רחוב שמעצים את הנוכחות של המסעדה.</p>
+          <div class="meta-row"><span class="chip">320×200×380mm</span><span class="chip">עד 6 ק"ג</span><span class="chip">FSC זמין</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-012</span><img src="renders/PB-012_v5.png" alt="נייר עטיפה למזון"></div>
+        <div class="info">
+          <h4>נייר עטיפה למזון (Greaseproof)</h4>
+          <p class="desc">גיליונות נייר עטיפה עמיד-שומן לבורגרים, סנדוויצ'ים ומאפים. הדפסת פטרן מלא משמש כעיצוב פנימי + חיצוני בו זמנית.</p>
+          <div class="meta-row"><span class="chip">עמיד שומן</span><span class="chip">פטרן הדפסה</span><span class="chip">MOQ 5,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-013</span><img src="renders/PB-013_v5.png" alt="שקית קוקיז"></div>
+        <div class="info">
+          <h4>שקית קוקי יחידנית</h4>
+          <p class="desc">שקית פויל קטנה לקוקי בודד או חטיף עם חלון שקוף במרכז - לקופות, ערכות מתנה ומכירה במונים.</p>
+          <div class="meta-row"><span class="chip">חלון שקוף</span><span class="chip">תווית טעם</span><span class="chip">MOQ 2,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-018</span><img src="renders/PB-018_v5.png" alt="קופסת מתנה פויל"></div>
+        <div class="info">
+          <h4>קופסת מתנה פויל יוקרתית</h4>
+          <p class="desc">קופסה קשיחה עם גימור פויל מטאלי בצבע המותג. למארזי מתנה, שוקולדים, קוסמטיקה וקולקציות עונתיות.</p>
+          <div class="meta-row"><span class="chip">פויל מטאלי</span><span class="chip">חוט נסיגה</span><span class="chip">MOQ 250</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-026</span><img src="renders/PB-026_v3.png" alt="גליל סושי"></div>
+        <div class="info">
+          <h4>גליל סושי (פטנט-Shape)</h4>
+          <p class="desc">קונטיינר גלילי נייר עם מכסה כיפה שקוף ובסיס שחור. אורך מדויק 4:1 - לסושי, ברסטיקס וחטיפים אנכיים.</p>
+          <div class="meta-row"><span class="chip">מכסה כיפה</span><span class="chip">4:1 פרופיל</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-025</span><img src="renders/PB-025_v3.png" alt="גליל סושי v1"></div>
+        <div class="info">
+          <h4>גליל סושי - גרסה דקה</h4>
+          <p class="desc">גרסת גליל סושי בפרופיל דק במיוחד - לאריזת רול בודד או חבילות שחקנים יחידניים. מכסה פלסטיק שטוח.</p>
+          <div class="meta-row"><span class="chip">פרופיל דק</span><span class="chip">מכסה שטוח</span><span class="chip">MOQ 1,000</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- Category: Brand Print -->
+  <div class="category-block">
+    <div class="category-head">
+      <h3>מיתוג נלווה והדפסים</h3>
+      <span class="count">2 פריטים</span>
+    </div>
+    <div class="products-grid">
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-007</span><img src="renders/PB-007_v2.png" alt="מפיות נייר"></div>
+        <div class="info">
+          <h4>מפיות נייר ממותגות</h4>
+          <p class="desc">מפיות 2-שכבות בהדפסת לוגו צבעונית. גוונים מותאמים, גימור מאט/מבריק והטבעות פויל לאקסטרה פרימיום.</p>
+          <div class="meta-row"><span class="chip">2-Ply</span><span class="chip">קיפול רבע</span><span class="chip">MOQ 5,000</span></div>
+        </div>
+      </article>
+      <article class="product">
+        <div class="img-wrap"><span class="badge">PB-008</span><img src="renders/PB-008_v6.png" alt="כרטיסי ביקור"></div>
+        <div class="info">
+          <h4>כרטיסי ביקור פרימיום</h4>
+          <p class="desc">נייר כבד 350 גרם, הדפסה דו-צדדית. גימורי פויל זהב/כסף, ספוט UV, חיתוכים מיוחדים והבלטות.</p>
+          <div class="meta-row"><span class="chip">350 GSM</span><span class="chip">85×55mm</span><span class="chip">MOQ 250</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINISHES & MATERIALS ============ -->
+<section class="finishes" id="finishes">
+  <div class="finishes-inner">
+    <div class="section-head" style="padding: 0; margin-bottom: 0; max-width:none;">
+      <div class="eyebrow" style="color: var(--accent-2);">חומרים, גימורים והטבעות</div>
+      <h2 style="color: var(--bg);">כל מה שהופך אריזה ל<em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent-2);">חוויה</em></h2>
+      <p class="sub" style="color: rgba(242,237,227,0.7);">
+        אנחנו עובדים עם מגוון רחב של חומרים וגימורים כדי להתאים את האריזה למוצר, לקהל ולנקודת המחיר שלכם.
+      </p>
+    </div>
+
+    <div class="finishes-grid">
+      <div class="finish-card">
+        <h4>הדפסת CMYK 4 צבעים</h4>
+        <p>הדפסה דיגיטלית או אופסט באיכות גבוהה, עם דיוק צבע ייחוסי לפי Pantone. מתאים לחזותות פוטוגרפיים ועיצובי הדפסה רחבים.</p>
+      </div>
+      <div class="finish-card">
+        <h4>פויל זהב, כסף ועיגונים</h4>
+        <p>חותמת פויל מבריקה (Hot Foil Stamping) על קרטון ונייר. זמין בזהב, כסף, נחושת, רוז, שחור ועוד 30+ גוונים.</p>
+      </div>
+      <div class="finish-card">
+        <h4>ספוט UV וגלוס מקומי</h4>
+        <p>גימור UV ממוקד שמדגיש לוגו, טקסט או איור נבחר. אפקט תלת-מימדי קל לתחושת איכות בלימוד מבט.</p>
+      </div>
+      <div class="finish-card">
+        <h4>הבלטה ושקיעה (Emboss/Deboss)</h4>
+        <p>הבלטות תלת-מימדיות שמורגשות בתחושה. מתאים ללוגואים, סלוגנים וטקסטורות פרימיום.</p>
+      </div>
+      <div class="finish-card">
+        <h4>חיתוכים מיוחדים (Die-Cut)</h4>
+        <p>חיתוכי לייזר וסכינים לפי דגם מותאם - חלונות, צורות אורגניות, פתיחות יצירתיות, צירים סוגרים.</p>
+      </div>
+      <div class="finish-card">
+        <h4>ציפויים תקפי-מזון</h4>
+        <p>ציפויי PE, PLA ו-Bio-Coating לעמידות בשומן, חום, קור ולחות. תעודות FSC ו-Compostable זמינות.</p>
+      </div>
+      <div class="finish-card">
+        <h4>למינציה מאט וגלוס</h4>
+        <p>למינציה Soft-Touch לתחושה קטיפתית, או למינציה גלוס לבריקה ועמידות מקסימלית בעת השימוש.</p>
+      </div>
+      <div class="finish-card">
+        <h4>אקו ו-FSC</h4>
+        <p>חומרים ממוחזרים, מתפרקים בקומפוסט, ותעודות FSC לעסקים עם מחויבות לסביבה ולקהלי לקוחות מודעים.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process" id="process">
+  <div class="section-head">
+    <div class="eyebrow">איך זה עובד · 4 שלבים</div>
+    <h2>מהפניה הראשונה <em style="font-family:'Playfair Display',serif;font-style:italic;color:var(--accent-2);">למשלוח הראשון</em></h2>
+    <p class="sub">תהליך מובנה וקצוב בזמן - כל לקוח מקבל מנהל תיק אישי שמלווה אותו מהשלב הראשון.</p>
+  </div>
+
+  <div class="process-steps">
+    <div class="step">
+      <div class="num-big">01</div>
+      <h4>בריף ושיחת אפיון</h4>
+      <p>פגישת זום או פנים-אל-פנים שבה אנחנו לומדים את המותג, הקהל, התקציב ולוחות הזמנים. תוצאה: הצעת מחיר ראשונית תוך 48 שעות.</p>
+    </div>
+    <div class="step">
+      <div class="num-big">02</div>
+      <h4>עיצוב וויזואליזציה</h4>
+      <p>מעצב מוקצה מכין 2-3 קונספטים מותאמים לאריזות שבחרתם. כולל מוקאפים פוטוריאליסטיים שמראים בדיוק איך זה ייצא בייצור.</p>
+    </div>
+    <div class="step">
+      <div class="num-big">03</div>
+      <h4>הפקה ובקרת איכות</h4>
+      <p>לאחר אישור הדוגמה הסופית, האריזות עוברות לייצור עם בקרת איכות בכל שלב - מהדפסה ועד החיתוך והקיפול הסופי.</p>
+    </div>
+    <div class="step">
+      <div class="num-big">04</div>
+      <h4>אספקה ולוגיסטיקה</h4>
+      <p>משלוח לכל הארץ תוך 7-14 ימי עסקים מאישור הדגימה. אפשרות לאחסון במחסן שלנו ושחרור הדרגתי לפי קצב הצריכה.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="cta">
+  <h2>מוכנים להפוך כל משלוח לרגע<br><em>שזוכרים</em>?</h2>
+  <p>קבלו הצעת מחיר ראשונית תוך 48 שעות. ללא התחייבות, עם פגישת אפיון חינמית, מוקאפים פוטוריאליסטיים והכל בעברית.</p>
+  <div class="cta-buttons">
+    <a href="mailto:hello@printbox.co.il" class="btn-primary">קבלו הצעת מחיר</a>
+    <a href="tel:+972000000000" class="btn-secondary">חייגו: 03-000-0000</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="brand-block">
+      <div class="brand"><span class="dot"></span><span>פרינטבוקס</span></div>
+      <p>ספק B2B לאריזות מותאמות אישית לעסקים בתחום המזון, הקפה, הקונדיטוריה והקמעונאות. שירות מקצה לקצה: עיצוב, הדפסה, ייצור ואספקה.</p>
+    </div>
+    <div>
+      <h5>קטלוג</h5>
+      <ul>
+        <li><a href="#brands">עולמות מיתוג</a></li>
+        <li><a href="#catalog">קטלוג מלא</a></li>
+        <li><a href="#finishes">חומרים וגימורים</a></li>
+        <li><a href="#process">איך זה עובד</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>חברה</h5>
+      <ul>
+        <li><a href="#">אודות</a></li>
+        <li><a href="#">קריירה</a></li>
+        <li><a href="#">בלוג</a></li>
+        <li><a href="#">תיק עבודות</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>צרו קשר</h5>
+      <ul>
+        <li>hello@printbox.co.il</li>
+        <li>03-000-0000</li>
+        <li>אצטדיון רמת-גן</li>
+        <li>ראשון–חמישי 09:00–18:00</li>
+      </ul>
+    </div>
+    <div class="legal">
+      <span>© 2026 פרינטבוקס. כל הזכויות שמורות.</span>
+      <span>תנאי שימוש · מדיניות פרטיות</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 6 brand worlds — order matches v1...v6
+  const BRANDS = [
+    { v: 'v1', name: 'RUBY & BUN' },
+    { v: 'v2', name: 'OLIVE GROVE' },
+    { v: 'v3', name: 'TŌKYO LANE' },
+    { v: 'v4', name: 'BIGM' },
+    { v: 'v5', name: 'CRAVE LAB' },
+    { v: 'v6', name: 'GREEN HARBOR' }
+  ];
+
+  // For every product card in the catalog: normalize main image to v1, inject variation switcher
+  document.querySelectorAll('section.catalog .product').forEach(prod => {
+    const badge = prod.querySelector('.badge');
+    if (!badge) return;
+    const sku = badge.textContent.trim();
+    const mainImg = prod.querySelector('.img-wrap img');
+    const info = prod.querySelector('.info');
+    if (!mainImg || !info) return;
+
+    // Default to v1 (RUBY & BUN) for all products
+    mainImg.src = `renders/${sku}_v1.png`;
+
+    // Build label
+    const label = document.createElement('div');
+    label.className = 'var-label';
+    label.innerHTML = `BRAND VARIATION · <span class="var-active-name">${BRANDS[0].name}</span>`;
+
+    // Build thumbnail strip
+    const strip = document.createElement('div');
+    strip.className = 'variations';
+
+    BRANDS.forEach((b, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'var-thumb' + (i === 0 ? ' active' : '');
+      btn.dataset.img = `renders/${sku}_${b.v}.png`;
+      btn.dataset.name = b.name;
+      btn.innerHTML = `<img src="renders/${sku}_${b.v}.png" alt="${b.name}" loading="lazy"><span class="tip">${b.name}</span>`;
+      btn.addEventListener('click', () => {
+        mainImg.src = btn.dataset.img;
+        strip.querySelectorAll('.var-thumb').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        label.querySelector('.var-active-name').textContent = btn.dataset.name;
+      });
+      strip.appendChild(btn);
+    });
+
+    // Insert label + strip before the meta-row (or at end of info)
+    const metaRow = info.querySelector('.meta-row');
+    if (metaRow) {
+      info.insertBefore(label, metaRow);
+      info.insertBefore(strip, metaRow);
+    } else {
+      info.appendChild(label);
+      info.appendChild(strip);
+    }
+  });
+</script>
+
+</body>
+</html>

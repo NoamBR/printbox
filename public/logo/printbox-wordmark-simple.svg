@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 120" role="img" aria-label="PrintBox">
+  <title>PrintBox</title>
+  <defs>
+    <style>
+      .pb-word { font-family: "Cormorant Garamond", "Cormorant", "EB Garamond", "Garamond", "Georgia", serif; font-weight: 300; letter-spacing: 0.16em; }
+    </style>
+  </defs>
+  <text x="300" y="80" text-anchor="middle" font-size="76" class="pb-word" fill="rgb(40,32,24)">PRINTBOX</text>
+</svg>
