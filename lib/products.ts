@@ -4,9 +4,35 @@
 export type Product = {
   id: string;
   title: string;
+  titleEn?: string;
   category: string;
   image: string;
   imageHover?: string;
+  moq?: number | null;
+};
+
+// MOQ pulled from catalog/PB-###_*.json files for products that have a real JSON spec.
+// Other products fall back to null (cart treats null as "no enforced minimum, default 100").
+const moqByProduct: Record<string, number> = {
+  "PB-001": 1000,
+  "PB-002": 500,
+  "PB-003": 1000,
+  "PB-004": 500,
+  "PB-005": 500,
+  "PB-006": 1000,
+  "PB-007": 5000,
+  "PB-008": 250,
+};
+
+const titleEnByProduct: Record<string, string> = {
+  "PB-001": "Coated Paperboard Burger Clamshell",
+  "PB-002": "Corrugated Kraft Burger Box",
+  "PB-003": "16oz Paper Cold Cup",
+  "PB-004": "Large SOS Paper Carrier Bag",
+  "PB-005": "Two-Piece Square Meal Box",
+  "PB-006": "Paper Fries Scoop / Snack Cup",
+  "PB-007": "Branded Printed Paper Napkins",
+  "PB-008": "Premium Double-Sided Business Cards",
 };
 
 const v1 = (id: string) => `/renders/${id}_v1.png`;
@@ -53,9 +79,11 @@ function entry(id: string): Product {
   return {
     id,
     title: meta.title,
+    titleEn: titleEnByProduct[id],
     category: meta.category,
     image: v1(id),
     imageHover: v2(id),
+    moq: moqByProduct[id] ?? null,
   };
 }
 

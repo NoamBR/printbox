@@ -3,6 +3,7 @@ import { Frank_Ruhl_Libre, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import ThemeBootstrap from "@/components/ThemeBootstrap";
 import ScrollToTopOnLoad from "@/components/ScrollToTopOnLoad";
+import CartDrawer from "@/components/CartDrawer";
 
 const frankRuhlSans = Frank_Ruhl_Libre({
   subsets: ["hebrew", "latin"],
@@ -29,7 +30,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: "PrintBox | אריזות ממותגות לעסקים",
   description:
-    "הפקה איכותית של כוסות, מנשאים, מארזי מזון וקופסאות משלוח ממותגות. מהסקיצה לדלת תוך 14 ימי עסקים, החל מ-100 יחידות.",
+    "הפקה איכותית של כוסות, מנשאים, מארזי מזון וקופסאות משלוח ממותגות. החל מ-100 יחידות.",
   metadataBase: new URL("https://print-box.store"),
   icons: {
     icon: [{ url: "/logo/favicon.svg", type: "image/svg+xml" }],
@@ -65,6 +66,7 @@ export default function RootLayout({
         <ThemeBootstrap />
         <ScrollToTopOnLoad />
         {children}
+        <CartDrawer />
       </body>
     </html>
   );

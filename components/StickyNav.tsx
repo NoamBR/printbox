@@ -1,9 +1,10 @@
 import { Box } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import CartIcon from "@/components/CartIcon";
 
 const navLinks = [
   { href: "/catalog", label: "מוצרים" },
-  { href: "/#quote", label: "הצעת מחיר" },
+  { href: "/cart", label: "סל הצעות" },
 ];
 
 export default function StickyNav() {
@@ -15,11 +16,12 @@ export default function StickyNav() {
       <div className="max-w-container mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <a
-            href="/#quote"
+            href="/catalog"
             className="inline-flex items-center min-h-[44px] px-5 rounded-sm bg-brand-gold text-brand-onEspresso font-semibold text-sm hover:bg-brand-goldHi transition-colors"
           >
-            קבלו הצעה
+            לקטלוג ולסל
           </a>
+          <CartIcon />
           <ThemeToggle />
         </div>
         <div className="flex items-center gap-4 lg:gap-7">

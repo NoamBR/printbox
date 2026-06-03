@@ -9,8 +9,11 @@ export type SendInput = {
   fromEmail?: string;
   subject: string;
   body: string;
-  prospect_id: number;
-  step: number;
+  html?: string;
+  prospect_id?: number;
+  step?: number;
+  /** Optional filename prefix used in dryrun mode for human discoverability. */
+  dryrunLabel?: string;
 };
 
 export type SendResult = {
@@ -22,25 +25,48 @@ export type SendResult = {
 export async function dryrunSend(input: SendInput): Promise<SendResult> {
   if (!fs.existsSync(SENT_DIR)) fs.mkdirSync(SENT_DIR, { recursive: true });
   const ts = new Date().toISOString().replace(/[:.]/g, "-");
-  const filename = `${input.prospect_id}_step${input.step}_${ts}.eml`;
+  const prospectId = input.prospect_id ?? 0;
+  const step = input.step ?? 0;
+  const label = input.dryrunLabel ? `${input.dryrunLabel}_` : "";
+  const filename = `${label}${prospectId}_step${step}_${ts}.eml`;
   const file = path.join(SENT_DIR, filename);
   const from =
     input.fromName && input.fromEmail
       ? `${input.fromName} <${input.fromEmail}>`
       : "PrintBox <noreply@printbox.local>";
-  const eml = [
+  const headers = [
     `From: ${from}`,
     `To: ${input.to}`,
     `Subject: ${input.subject}`,
-    `Content-Type: text/plain; charset=utf-8`,
     `Content-Language: he`,
     `X-PrintBox-Mode: dryrun`,
-    `X-PrintBox-Prospect: ${input.prospect_id}`,
-    `X-PrintBox-Step: ${input.step}`,
+    `X-PrintBox-Prospect: ${prospectId}`,
+    `X-PrintBox-Step: ${step}`,
     `Date: ${new Date().toUTCString()}`,
-    ``,
-    input.body,
-  ].join("\r\n");
+  ];
+  let eml: string;
+  if (input.html) {
+    const boundary = `pb_boundary_${Date.now()}`;
+    eml =
+      [
+        ...headers,
+        `MIME-Version: 1.0`,
+        `Content-Type: multipart/alternative; boundary="${boundary}"`,
+        ``,
+        `--${boundary}`,
+        `Content-Type: text/plain; charset=utf-8`,
+        ``,
+        input.body,
+        `--${boundary}`,
+        `Content-Type: text/html; charset=utf-8`,
+        ``,
+        input.html,
+        `--${boundary}--`,
+        ``,
+      ].join("\r\n");
+  } else {
+    eml = [...headers, `Content-Type: text/plain; charset=utf-8`, ``, input.body].join("\r\n");
+  }
   fs.writeFileSync(file, eml, "utf8");
   return { ok: true, mode: "dryrun", file: path.relative(process.cwd(), file) };
 }

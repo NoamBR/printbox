@@ -8,9 +8,11 @@ import ProductModal from "./ProductModal";
 type Props = {
   id: string;
   title: string;
+  titleEn?: string;
   category: string;
   image: string;
   imageHover?: string;
+  moq?: number | null;
   index?: number;
   alt?: string;
 };
@@ -18,9 +20,11 @@ type Props = {
 export default function ProductCard({
   id,
   title,
+  titleEn,
   category,
   image,
   imageHover,
+  moq,
   index,
   alt,
 }: Props) {
@@ -111,7 +115,9 @@ export default function ProductCard({
         onClose={() => setModalOpen(false)}
         productId={id}
         title={title}
+        titleEn={titleEn}
         category={category}
+        moq={moq ?? null}
       />
     </>
   );

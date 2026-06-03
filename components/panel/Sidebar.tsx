@@ -9,10 +9,12 @@ import {
   FileText,
   Inbox,
   Settings,
+  Receipt,
 } from "lucide-react";
 
 const items = [
   { href: "/panel", label: "לוח בקרה", icon: LayoutDashboard },
+  { href: "/panel/quotes", label: "הצעות מחיר", icon: Receipt },
   { href: "/panel/prospects", label: "לידים", icon: Users },
   { href: "/panel/inbox", label: "תיבת נכנס", icon: Inbox },
   { href: "/panel/upload", label: "ייבוא CSV", icon: Upload },

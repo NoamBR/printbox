@@ -3,7 +3,7 @@
 ## Identity
 **Brand:** פרינטבוקס (PrintBox)
 **Tagline:** מיתוג אריזות חכם לעסקים
-**Promise:** מהסקיצה לדלת תוך 14 ימי עסקים
+**Promise:** מיתוג איכותי, ליווי אישי, אריזות שמייצרות חוויה
 
 ## Target Audience
 - בתי קפה ובוטיק קפה (cafes / boutique coffee shops)

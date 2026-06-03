@@ -127,10 +127,10 @@ export default function Hero() {
             className="mt-7 flex flex-wrap gap-3"
           >
             <a
-              href="#quote"
+              href="/catalog"
               className="group inline-flex items-center justify-center gap-2 min-h-[54px] w-full sm:w-auto px-6 sm:px-8 rounded-sm bg-brand-gold text-brand-onEspresso font-semibold text-base shadow-soft hover:bg-brand-goldHi hover:shadow-softHover hover:-translate-y-0.5 transition-all duration-250"
             >
-              קבלו הצעת מחיר
+              בחרו מוצר וקבלו הצעה
               <ArrowLeft className="size-5 transition-transform group-hover:-translate-x-1" />
             </a>
             <a

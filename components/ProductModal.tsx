@@ -3,13 +3,16 @@
 import Image from "next/image";
 import { useEffect } from "react";
 import { X } from "lucide-react";
+import AddToCartPanel from "@/components/AddToCartPanel";
 
 type Props = {
   open: boolean;
   onClose: () => void;
   productId: string;
   title: string;
+  titleEn?: string;
   category: string;
+  moq?: number | null;
 };
 
 export default function ProductModal({
@@ -17,7 +20,9 @@ export default function ProductModal({
   onClose,
   productId,
   title,
+  titleEn,
   category,
+  moq = null,
 }: Props) {
   // Esc closes; lock body scroll while open
   useEffect(() => {
@@ -111,18 +116,13 @@ export default function ProductModal({
           ))}
         </div>
 
-        {/* Footer CTA */}
-        <div className="px-5 sm:px-6 lg:px-10 py-5 sm:py-6 border-t border-brand-line flex flex-col sm:flex-row gap-3 justify-between items-center">
-          <p className="text-sm text-brand-boneDim text-right">
-            אהבתם וריאציה? קבלו הצעת מחיר על המוצר עם המיתוג שלכם.
-          </p>
-          <a
-            href="#quote"
-            onClick={onClose}
-            className="inline-flex items-center justify-center min-h-[46px] px-6 rounded-sm bg-brand-gold text-brand-onEspresso font-semibold text-sm hover:bg-brand-goldHi transition-colors"
-          >
-            קבלו הצעת מחיר
-          </a>
+        <div className="px-5 sm:px-6 lg:px-10 py-5 sm:py-6 border-t border-brand-line">
+          <AddToCartPanel
+            productId={productId}
+            titleHe={title}
+            titleEn={titleEn ?? title}
+            moq={moq}
+          />
         </div>
       </div>
     </div>

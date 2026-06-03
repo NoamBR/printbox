@@ -10,10 +10,10 @@ export default function MobileCtaBar() {
     >
       <div className="px-4 py-3">
         <a
-          href="/#quote"
+          href="/catalog"
           className="flex items-center justify-center min-h-[52px] w-full rounded-md bg-brand-gold text-brand-noir font-semibold text-base shadow-soft active:scale-[0.98] transition-transform"
         >
-          קבלו הצעת מחיר
+          לקטלוג ולסל
         </a>
       </div>
     </div>

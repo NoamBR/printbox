@@ -6,7 +6,7 @@ import MobileCatalogCta from "@/components/MobileCatalogCta";
 import Process from "@/components/Process";
 import SocialProof from "@/components/SocialProof";
 import GuaranteeStrip from "@/components/GuaranteeStrip";
-import QuoteForm from "@/components/QuoteForm";
+import QuoteCta from "@/components/QuoteCta";
 import Footer from "@/components/Footer";
 import StickyNav from "@/components/StickyNav";
 import MobileCtaBar from "@/components/MobileCtaBar";
@@ -30,7 +30,7 @@ export default function Home() {
       <Process />
       <SocialProof />
       <GuaranteeStrip />
-      <QuoteForm />
+      <QuoteCta />
       <Footer />
       <MobileCtaBar />
     </main>

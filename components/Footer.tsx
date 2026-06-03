@@ -1,4 +1,4 @@
-import { Box, Mail, Phone, MapPin, Instagram, Linkedin } from "lucide-react";
+import { Box, Mail, Phone, Instagram, Linkedin } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -16,8 +16,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-brand-boneDim leading-relaxed max-w-sm">
-              אריזות ממותגות פרימיום לעסקים בישראל. מהרעיון לדלת — תוך 14 ימי
-              עסקים.
+              אריזות ממותגות פרימיום לעסקים בישראל.
             </p>
             <div className="flex gap-3 mt-6">
               <a
@@ -46,7 +45,7 @@ export default function Footer() {
                 ["#products", "מוצרים"],
                 ["#", "איך זה עובד"],
                 ["#", "שאלות נפוצות"],
-                ["#quote", "צרו קשר"],
+                ["/cart", "סל הצעות"],
                 ["#", "הצהרת נגישות"],
               ].map(([href, label]) => (
                 <li key={label}>
@@ -69,26 +68,22 @@ export default function Footer() {
               <li className="flex items-start gap-2 justify-end flex-row-reverse">
                 <Mail className="size-4 mt-1 shrink-0 text-brand-gold" />
                 <a
-                  href="mailto:info@print-box.store"
+                  href="mailto:marketing@print-box.store"
                   className="hover:text-brand-bone"
                   dir="ltr"
                 >
-                  info@print-box.store
+                  marketing@print-box.store
                 </a>
               </li>
               <li className="flex items-start gap-2 justify-end flex-row-reverse">
                 <Phone className="size-4 mt-1 shrink-0 text-brand-gold" />
                 <a
-                  href="tel:+972-3-722-8800"
+                  href="tel:+972-53-306-2022"
                   className="hover:text-brand-bone"
                   dir="ltr"
                 >
-                  03-722-8800
+                  053-306-2022
                 </a>
-              </li>
-              <li className="flex items-start gap-2 justify-end flex-row-reverse">
-                <MapPin className="size-4 mt-1 shrink-0 text-brand-gold" />
-                <span>רחוב היצירה 8, פתח תקווה</span>
               </li>
               <li className="text-sm text-brand-boneDim/80">
                 ימים א&apos;–ה&apos;, ‎09:00–18:00

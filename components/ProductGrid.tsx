@@ -69,9 +69,11 @@ export default function ProductGrid() {
               <ProductCard
                 id={p.id}
                 title={p.title}
+                titleEn={p.titleEn}
                 category={p.category}
                 image={p.image}
                 imageHover={p.imageHover}
+                moq={p.moq ?? null}
                 index={i}
               />
             </motion.div>
@@ -88,9 +90,11 @@ export default function ProductGrid() {
               <ProductCard
                 id={p.id}
                 title={p.title}
+                titleEn={p.titleEn}
                 category={p.category}
                 image={p.image}
                 imageHover={p.imageHover}
+                moq={p.moq ?? null}
                 index={i}
               />
             </div>

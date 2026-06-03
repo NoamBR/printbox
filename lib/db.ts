@@ -84,6 +84,52 @@ function migrate(db: Database.Database): void {
     CREATE INDEX IF NOT EXISTS idx_messages_thread ON messages(thread_root);
     CREATE INDEX IF NOT EXISTS idx_messages_msgid ON messages(message_id);
     CREATE UNIQUE INDEX IF NOT EXISTS idx_messages_uid ON messages(imap_uid) WHERE imap_uid IS NOT NULL;
+
+    CREATE TABLE IF NOT EXISTS quotes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      public_id TEXT NOT NULL UNIQUE,
+      client_name TEXT NOT NULL,
+      client_company TEXT NOT NULL,
+      client_email TEXT NOT NULL,
+      client_phone TEXT NOT NULL,
+      client_notes TEXT,
+      status TEXT NOT NULL DEFAULT 'PENDING_OWNER_APPROVAL',
+      final_price_ils INTEGER,
+      final_price_notes TEXT,
+      prospect_id INTEGER REFERENCES prospects(id) ON DELETE SET NULL,
+      approve_token TEXT NOT NULL,
+      reject_token TEXT NOT NULL,
+      follow_up_due_at TEXT,
+      replied_at TEXT,
+      user_agent TEXT,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+      owner_decided_at TEXT,
+      sent_to_client_at TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_quotes_status ON quotes(status);
+    CREATE INDEX IF NOT EXISTS idx_quotes_email ON quotes(client_email);
+    CREATE INDEX IF NOT EXISTS idx_quotes_prospect ON quotes(prospect_id);
+
+    CREATE TABLE IF NOT EXISTS quote_items (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      quote_id INTEGER NOT NULL REFERENCES quotes(id) ON DELETE CASCADE,
+      product_id TEXT NOT NULL,
+      product_title_he TEXT NOT NULL,
+      product_title_en TEXT NOT NULL,
+      quantity INTEGER NOT NULL,
+      specs_json TEXT,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    CREATE INDEX IF NOT EXISTS idx_quote_items_quote ON quote_items(quote_id);
+
+    CREATE TABLE IF NOT EXISTS quote_events (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      quote_id INTEGER NOT NULL REFERENCES quotes(id) ON DELETE CASCADE,
+      type TEXT NOT NULL,
+      meta_json TEXT,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    CREATE INDEX IF NOT EXISTS idx_quote_events_quote ON quote_events(quote_id, created_at);
   `);
 }
 
@@ -166,4 +212,63 @@ export function logEvent(
   db.prepare(
     "INSERT INTO events (prospect_id, type, step, meta_json) VALUES (?, ?, ?, ?)"
   ).run(prospect_id, type, step, meta ? JSON.stringify(meta) : null);
+}
+
+export type QuoteStatus =
+  | "PENDING_OWNER_APPROVAL"
+  | "APPROVED"
+  | "REJECTED"
+  | "SENT_TO_CLIENT"
+  | "CLIENT_RESPONDED";
+
+export type QuoteRow = {
+  id: number;
+  public_id: string;
+  client_name: string;
+  client_company: string;
+  client_email: string;
+  client_phone: string;
+  client_notes: string | null;
+  status: QuoteStatus;
+  final_price_ils: number | null;
+  final_price_notes: string | null;
+  prospect_id: number | null;
+  approve_token: string;
+  reject_token: string;
+  follow_up_due_at: string | null;
+  replied_at: string | null;
+  user_agent: string | null;
+  created_at: string;
+  owner_decided_at: string | null;
+  sent_to_client_at: string | null;
+};
+
+export type QuoteItemRow = {
+  id: number;
+  quote_id: number;
+  product_id: string;
+  product_title_he: string;
+  product_title_en: string;
+  quantity: number;
+  specs_json: string | null;
+  created_at: string;
+};
+
+export type QuoteEventRow = {
+  id: number;
+  quote_id: number;
+  type: string;
+  meta_json: string | null;
+  created_at: string;
+};
+
+export function logQuoteEvent(
+  quote_id: number,
+  type: string,
+  meta: Record<string, unknown> | null = null
+): void {
+  const db = getDb();
+  db.prepare(
+    "INSERT INTO quote_events (quote_id, type, meta_json) VALUES (?, ?, ?)"
+  ).run(quote_id, type, meta ? JSON.stringify(meta) : null);
 }

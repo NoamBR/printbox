@@ -75,13 +75,14 @@ export async function smtpSend(input: SmtpSendInput): Promise<SmtpSendResult> {
     replyTo,
     subject: input.subject,
     text: input.body,
+    html: input.html,
     inReplyTo: input.inReplyTo,
     references: input.references,
     attachments: input.attachments,
     headers: {
       "X-PrintBox-Mode": "smtp",
-      "X-PrintBox-Prospect": String(input.prospect_id),
-      "X-PrintBox-Step": String(input.step),
+      "X-PrintBox-Prospect": String(input.prospect_id ?? 0),
+      "X-PrintBox-Step": String(input.step ?? 0),
       ...(input.headers ?? {}),
     },
   });

@@ -90,12 +90,12 @@ export function ProductSpread({
             </dl>
 
             <a
-              href="#quote"
+              href="/cart"
               className="inline-flex items-center gap-2 text-brand-ink hover:text-brand-gold transition-colors text-sm border-b border-brand-gold pb-1"
             >
-              <span className="font-display italic">Request a Quote</span>
+              <span className="font-display italic">Open Cart</span>
               <span className="text-brand-boneDim">·</span>
-              <span>קבלו הצעת מחיר</span>
+              <span>הוספה לסל הצעות</span>
             </a>
           </div>
         </div>
