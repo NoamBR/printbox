@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landwer · Packaging Proposal · 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  :root {
+    --bg: #F4EFE3;
+    --bg-deep: #EBE3CE;
+    --line: #C9BFA7;
+    --line-soft: #DDD4BC;
+    --ink: #2C2620;
+    --ink-soft: #5A4F42;
+    --ink-mute: #8A7F66;
+    --burgundy: #590B00;
+    --burgundy-soft: #8A2418;
+    --green-leaf: #44513A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Frank Ruhl Libre', 'Cormorant Garamond', serif;
+    font-weight: 400;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    direction: rtl;
+  }
+  img { display: block; max-width: 100%; }
+
+  /* ========= TYPOGRAPHY ========= */
+  .lat { font-family: 'Cormorant Garamond', serif; }
+  .heb { font-family: 'Frank Ruhl Libre', serif; }
+  .sans-lat { font-family: 'Frank Ruhl Libre', serif; letter-spacing: 0; }
+  .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 500;
+    direction: ltr;
+  }
+
+  /* ========= PAGE FRAMEWORK ========= */
+  .page {
+    width: 297mm;
+    height: 210mm;
+    padding: 14mm 18mm;
+    position: relative;
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg);
+  }
+  .page:last-child { page-break-after: auto; }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid var(--line);
+    padding-bottom: 6mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    direction: ltr;
+  }
+  .page-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid var(--line);
+    padding-top: 4mm;
+    margin-top: auto;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    direction: ltr;
+  }
+  .page-foot .pgnum {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: var(--burgundy);
+    text-transform: none;
+  }
+
+  /* ========= 01. COVER ========= */
+  .cover {
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+  }
+  .cover .left-col {
+    padding: 14mm 18mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: var(--bg);
+  }
+  .cover .right-col {
+    overflow: hidden;
+    background: var(--bg-deep);
+  }
+  .cover .right-col img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .cover .masthead {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 6mm;
+    border-bottom: 0.5px solid var(--burgundy);
+  }
+  .cover .masthead .pb-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    direction: ltr;
+  }
+  .cover .masthead .pb-tag em {
+    font-style: italic;
+    color: var(--burgundy);
+  }
+  .cover .center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cover .issue-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 8mm;
+    direction: ltr;
+  }
+  .cover h1 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 96pt;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--burgundy);
+    margin-bottom: 4mm;
+  }
+  .cover h1 .heb-lockup {
+    display: block;
+    font-size: 64pt;
+    margin-top: 1mm;
+    letter-spacing: 0;
+  }
+  .cover .deck-rule {
+    width: 64px;
+    height: 1px;
+    background: var(--burgundy);
+    margin: 8mm 0;
+  }
+  .cover .deck-text {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 14pt;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 110mm;
+    font-weight: 300;
+  }
+  .cover .proposal-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14pt;
+    color: var(--burgundy);
+    margin-top: 6mm;
+    direction: ltr;
+  }
+  .cover .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6mm;
+    border-top: 0.5px solid var(--burgundy);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    direction: ltr;
+  }
+  .cover .foot strong { color: var(--burgundy); font-weight: 600; }
+
+  /* ========= CHAPTER PAGE (2-product layout) ========= */
+  .chapter .head-block {
+    margin-top: 6mm;
+    margin-bottom: 4mm;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 14mm;
+    align-items: end;
+  }
+  .chapter .chapter-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13pt;
+    color: var(--burgundy);
+    margin-bottom: 3mm;
+    direction: ltr;
+    font-weight: 500;
+  }
+  .chapter h2 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 54pt;
+    line-height: 0.95;
+    margin-bottom: 4mm;
+    color: var(--ink);
+    direction: rtl;
+  }
+  .chapter h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--burgundy);
+    font-weight: 400;
+  }
+  .chapter .lat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18pt;
+    color: var(--ink-mute);
+    margin-bottom: 3mm;
+    direction: ltr;
+    font-weight: 400;
+  }
+  .chapter .deck {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 11.5pt;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    font-weight: 300;
+    max-width: 110mm;
+  }
+  .chapter .divider {
+    height: 0.5px;
+    background: var(--burgundy);
+    margin: 4mm 0 6mm;
+  }
+
+  .product-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+    flex: 1;
+  }
+  .product-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .product-card .img-wrap {
+    aspect-ratio: 11 / 6;
+    background: var(--bg-deep);
+    overflow: hidden;
+    border-radius: 1mm;
+    border: 0.5px solid var(--line);
+    margin-bottom: 4mm;
+  }
+  .product-card .img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .product-card .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1mm;
+  }
+  .product-card .sku {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--burgundy);
+    letter-spacing: 0.15em;
+    direction: ltr;
+  }
+  .product-card .moq {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9pt;
+    color: var(--ink-mute);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    direction: ltr;
+  }
+  .product-card h3 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 500;
+    font-size: 17pt;
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 2mm;
+  }
+  .product-card .lat-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: var(--ink-mute);
+    margin-bottom: 3mm;
+    direction: ltr;
+  }
+  .product-card p {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .product-card .specs {
+    margin-top: 3mm;
+    padding-top: 3mm;
+    border-top: 0.5px solid var(--line-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3mm;
+  }
+  .product-card .spec {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9pt;
+    color: var(--ink-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    direction: ltr;
+  }
+  .product-card .spec strong {
+    color: var(--burgundy);
+    font-weight: 600;
+  }
+
+  /* ========= BACK COVER / IDENTITY ========= */
+  .back-cover {
+    background: var(--burgundy);
+    color: var(--bg);
+    display: flex;
+    flex-direction: column;
+    padding: 14mm 18mm;
+  }
+  .back-cover .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid rgba(244,239,227,0.3);
+    padding-bottom: 6mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(244,239,227,0.7);
+    direction: ltr;
+  }
+  .back-cover .main-block {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 14mm;
+    align-items: center;
+    padding: 8mm 0;
+  }
+  .back-cover .text-col h2 {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 72pt;
+    line-height: 0.95;
+    color: var(--bg);
+    margin-bottom: 8mm;
+    direction: rtl;
+  }
+  .back-cover .text-col h2 em {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: rgba(244,239,227,0.85);
+    font-weight: 400;
+  }
+  .back-cover .text-col .lat-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16pt;
+    color: rgba(244,239,227,0.65);
+    margin-bottom: 8mm;
+    direction: ltr;
+  }
+  .back-cover .text-col .deck {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 300;
+    font-size: 14pt;
+    line-height: 1.6;
+    color: rgba(244,239,227,0.8);
+    max-width: 130mm;
+    margin-bottom: 8mm;
+  }
+  .back-cover .contact-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6mm 10mm;
+    padding-top: 6mm;
+    border-top: 0.5px solid rgba(244,239,227,0.3);
+  }
+  .back-cover .contact-item .label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9pt;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(244,239,227,0.55);
+    margin-bottom: 1mm;
+    direction: ltr;
+  }
+  .back-cover .contact-item .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    color: var(--bg);
+    direction: ltr;
+  }
+  .back-cover .product-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 6mm;
+  }
+  .back-cover .product-side .img-wrap {
+    overflow: hidden;
+    border-radius: 1mm;
+    background: var(--bg-deep);
+    aspect-ratio: 11 / 6;
+  }
+  .back-cover .product-side .img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .back-cover .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid rgba(244,239,227,0.3);
+    padding-top: 6mm;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(244,239,227,0.7);
+    direction: ltr;
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE I — COVER ============ -->
+<section class="page cover">
+  <div class="left-col">
+    <div class="masthead">
+      <span class="pb-tag">Prepared by <em>Printbox</em> · For Landwer Café</span>
+    </div>
+
+    <div class="center">
+      <div class="issue-line">Packaging Proposal · MMXXVI</div>
+      <h1>
+        landwer
+        <span class="heb-lockup">לנדוור</span>
+      </h1>
+      <div class="deck-rule"></div>
+      <p class="deck-text">קולקציית אריזה מותאמת אישית — הצעה בלעדית לרשת בתי הקפה לנדוור. עיצוב המתבסס על שפת המותג, צבעי הבית והאסתטיקה הים-תיכונית.</p>
+      <div class="proposal-tag">Custom Edit · Collection No. 01</div>
+    </div>
+
+    <div class="foot">
+      <span>Printbox · Tel Aviv</span>
+      <span><strong>landwercafe.co.il</strong></span>
+    </div>
+  </div>
+  <div class="right-col">
+    <img src="renders/PB-030_v8.png" alt="Landwer double-wall coffee cup">
+  </div>
+</section>
+
+<!-- ============ PAGE II — THE DAILY CUP ============ -->
+<section class="page chapter">
+  <div class="page-head">
+    <span>Chapter I</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>The Daily Cup</span>
+  </div>
+
+  <div class="head-block">
+    <div>
+      <div class="chapter-num">Chapter I</div>
+      <h2>הספל <em>היומי</em></h2>
+      <div class="lat-title">The Daily Cup</div>
+    </div>
+    <div>
+      <p class="deck">הספל שבו מתחיל היום. דופן יחידה לטעימה מהירה, דופן כפולה לחוויית פרימיום ללא שרוול. שניהם בקרם חם עם חותם בורדו.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-pair">
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-029_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-029</span><span class="moq">MOQ 1,000</span></div>
+      <h3>כוס קפה חמה · דופן יחידה</h3>
+      <div class="lat-name">Single-Wall Hot Cup · 12oz/16oz</div>
+      <p>כוס נייר תקנית לקפה חם, מצופה PE, מותאמת לשרוול קרטון נפרד למיגון תרמי. המכסה החום הקלאסי משלים את הוויברציה הים-תיכונית.</p>
+      <div class="specs"><span class="spec"><strong>12oz</strong></span><span class="spec"><strong>16oz</strong></span><span class="spec">PE Coated</span></div>
+    </article>
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-030_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-030</span><span class="moq">MOQ 1,000</span></div>
+      <h3>כוס קפה חמה · דופן כפולה</h3>
+      <div class="lat-name">Double-Wall Insulated · 12oz/16oz</div>
+      <p>גרסת פרימיום עם דופן כפולה ובידוד אוויר — ללא שרוול נפרד, נעימה לאחיזה גם במשקאות רותחים. השדרוג הטבעי של חוויית הלקוח.</p>
+      <div class="specs"><span class="spec"><strong>Insulated</strong></span><span class="spec">No Sleeve</span><span class="spec">Premium</span></div>
+    </article>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">II</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>Chapter I — The Daily Cup</span>
+  </div>
+</section>
+
+<!-- ============ PAGE III — THE ICED HOUR ============ -->
+<section class="page chapter">
+  <div class="page-head">
+    <span>Chapter II</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>The Iced Hour</span>
+  </div>
+
+  <div class="head-block">
+    <div>
+      <div class="chapter-num">Chapter II</div>
+      <h2>שעת <em>הקפה הקר</em></h2>
+      <div class="lat-title">The Iced Hour</div>
+    </div>
+    <div>
+      <p class="deck">קיץ ים-תיכוני בכוס. מאיסקפה ועד לימונדה — ובמגש שמחזיק שלוש כוסות לדרך הביתה.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-pair">
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-003_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-003</span><span class="moq">MOQ 1,000</span></div>
+      <h3>כוס משקה קר · 16oz</h3>
+      <div class="lat-name">Cold Cup with Flat Lid · 473ml</div>
+      <p>כוס נייר 473 מ"ל מצופה PE לעמידות בקרח ולחות, עם מכסה שטוח ופתח שתייה. נשמרת היטב בעצימות שטוחה ולא דוחקת את החותם.</p>
+      <div class="specs"><span class="spec"><strong>473ml</strong></span><span class="spec">Flat Lid</span><span class="spec">PE Coated</span></div>
+    </article>
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-016_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-016</span><span class="moq">MOQ 500</span></div>
+      <h3>מגש נשיאה · 3 כוסות</h3>
+      <div class="lat-name">Three-Cup Carrier Tray</div>
+      <p>מגש קרטון יציב לשלוש כוסות לקיחה. שטחי הדפסה רחבים בצדדים — נוכחות מותג בולטת בכל פינת רחוב.</p>
+      <div class="specs"><span class="spec"><strong>3 Cups</strong></span><span class="spec">Take-Away</span></div>
+    </article>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">III</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>Chapter II — The Iced Hour</span>
+  </div>
+</section>
+
+<!-- ============ PAGE IV — FROM THE OVEN ============ -->
+<section class="page chapter">
+  <div class="page-head">
+    <span>Chapter III</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>From the Oven</span>
+  </div>
+
+  <div class="head-block">
+    <div>
+      <div class="chapter-num">Chapter III</div>
+      <h2>מן <em>התנור</em></h2>
+      <div class="lat-title">From the Oven</div>
+    </div>
+    <div>
+      <p class="deck">לחם ארטיזנלי שמדבר בעצמו, וקופסת מאפים שנפתחת ומגלה את הנוף שבפנים. הריח הוא הסיפור — האריזה רק מארחת.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-pair">
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-015_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-015</span><span class="moq">MOQ 500</span></div>
+      <h3>שקית לחם · Tin-Tie</h3>
+      <div class="lat-name">Artisan Bread Bag with Window</div>
+      <p>שקית עומדת עם סגירת חוט-מתכת בראש וחלון שקוף במרכז. הלחם נראה — האריזה רק מסגרת. החותם הוויטאז' מציין שזה לנדוור.</p>
+      <div class="specs"><span class="spec">Stand-Up</span><span class="spec">Window</span><span class="spec">Tin-Tie</span></div>
+    </article>
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-014_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-014</span><span class="moq">MOQ 500</span></div>
+      <h3>קופסת מאפים</h3>
+      <div class="lat-name">Pastry Box · Patterned Interior</div>
+      <p>קופסה לקרואסונים, פלמייה ומאפים מקומיים. החוץ קרם נקי, הפנים מודפס בפטרן חותם בורדו — חשיפת מותג ברגע הפתיחה.</p>
+      <div class="specs"><span class="spec">4 Pastries</span><span class="spec"><strong>Inner Print</strong></span></div>
+    </article>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">IV</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>Chapter III — From the Oven</span>
+  </div>
+</section>
+
+<!-- ============ PAGE V — THE MEDITERRANEAN TABLE ============ -->
+<section class="page chapter">
+  <div class="page-head">
+    <span>Chapter IV</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>The Mediterranean Table</span>
+  </div>
+
+  <div class="head-block">
+    <div>
+      <div class="chapter-num">Chapter IV</div>
+      <h2>השולחן <em>הים-תיכוני</em></h2>
+      <div class="lat-title">The Mediterranean Table</div>
+    </div>
+    <div>
+      <p class="deck">קערת בורגול עם מרק עדשים. סלט יווני עם פטה ועלי בייבי. השולחן של לנדוור עובר למשלוח בלי לאבד את ההילה.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-pair">
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-005_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-005</span><span class="moq">MOQ 500</span></div>
+      <h3>קופסת ארוחה מרובעת</h3>
+      <div class="lat-name">Two-Piece Square Meal Box</div>
+      <p>בסיס עמוק וכיסוי נפרד — אידיאלי לסנדוויצ'ים, פסטות, קישים וארוחות פתוחות. ניתנת לערימה במשלוחים גדולים.</p>
+      <div class="specs"><span class="spec">180×180×75</span><span class="spec">Stackable</span></div>
+    </article>
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-027_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-027</span><span class="moq">MOQ 1,000</span></div>
+      <h3>קערת סלט · פוקה</h3>
+      <div class="lat-name">Salad/Poke Bowl + Dome Lid</div>
+      <p>קערת נייר עגולה למזרח התיכון על הצלחת — סלט יווני, טאבולה, בורגול, מרק. מכסה כיפה PET נפרד לתצוגה והגנה.</p>
+      <div class="specs"><span class="spec">PET Dome Lid</span><span class="spec">Salad/Poke</span></div>
+    </article>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">V</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>Chapter IV — The Mediterranean Table</span>
+  </div>
+</section>
+
+<!-- ============ PAGE VI — SWEET FINISH ============ -->
+<section class="page chapter">
+  <div class="page-head">
+    <span>Chapter V</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>Sweet Finish</span>
+  </div>
+
+  <div class="head-block">
+    <div>
+      <div class="chapter-num">Chapter V</div>
+      <h2>סיום <em>מתוק</em></h2>
+      <div class="lat-title">Sweet Finish</div>
+    </div>
+    <div>
+      <p class="deck">גלידה ביתית בכוס פינט, ושקית נשיאה גדולה לרגעי המתנה הביתה. שני קצוות של חוויה — שניהם מסומנים בחותם הבית.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="product-pair">
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-028_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-028</span><span class="moq">MOQ 1,000</span></div>
+      <h3>כוס גלידה · פינט</h3>
+      <div class="lat-name">Ice Cream Pint · 330g</div>
+      <p>קונטיינר נייר גלילי עם מכסה פלסטיק לבן הדוק. לגלידה ביתית, פרוזן יוגורט וקינוחים קפואים — חותם לנדוור בחזית, פרטי טעם בצד.</p>
+      <div class="specs"><span class="spec"><strong>1 PINT</strong></span><span class="spec">330g</span></div>
+    </article>
+    <article class="product-card">
+      <div class="img-wrap"><img src="renders/PB-004_v8.png" alt=""></div>
+      <div class="meta-row"><span class="sku">PB-004</span><span class="moq">MOQ 500</span></div>
+      <h3>שקית נשיאה SOS · גדולה</h3>
+      <div class="lat-name">Large Carrier Bag · Flat Handles</div>
+      <p>שקית נייר קראפט יציבה לטייק-אווי משפחתי — חותם לנדוור פעם אחת על הפנים הגדול, ידיות שטוחות תואמות-צבע.</p>
+      <div class="specs"><span class="spec">320×200×380</span><span class="spec">6kg Load</span></div>
+    </article>
+  </div>
+
+  <div class="page-foot">
+    <span class="pgnum">VI</span>
+    <span>Landwer · Printbox Proposal</span>
+    <span>Chapter V — Sweet Finish</span>
+  </div>
+</section>
+
+<!-- ============ PAGE VII — THE IDENTITY + CTA ============ -->
+<section class="page back-cover">
+  <div class="top-bar">
+    <span>Chapter VI · The Identity</span>
+    <span>Landwer · Printbox Proposal MMXXVI</span>
+  </div>
+
+  <div class="main-block">
+    <div class="text-col">
+      <div class="lat-title">Chapter VI — The Identity</div>
+      <h2>הזהות. <em>בכל פרט.</em></h2>
+      <p class="deck">מהמפיות שבשולחן ועד לכרטיסי הביקור שבכיס — כל פריט נושא את חותם לנדוור. הזהות לא מוכרזת, היא נמסרת בשקט.</p>
+
+      <div class="contact-block">
+        <div class="contact-item">
+          <div class="label">Studio</div>
+          <div class="value">Printbox · Tel Aviv</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Email</div>
+          <div class="value">hello@printbox.co.il</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Phone</div>
+          <div class="value">03-000-0000</div>
+        </div>
+        <div class="contact-item">
+          <div class="label">Lead Time</div>
+          <div class="value">14 Business Days</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-side">
+      <div class="img-wrap"><img src="renders/PB-007_v8.png" alt="Landwer napkin"></div>
+      <div class="img-wrap"><img src="renders/PB-008_v8.png" alt="Landwer business cards"></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>© 2026 Printbox</span>
+    <span class="pgnum" style="color: rgba(244,239,227,0.85);">VII</span>
+    <span>Made for Landwer · Custom Edit No. 01</span>
+  </div>
+</section>
+
+</body>
+</html>

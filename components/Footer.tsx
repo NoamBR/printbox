@@ -21,14 +21,14 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 mt-6">
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/printbox.il"
                 aria-label="אינסטגרם"
                 className="w-10 h-10 rounded-md border border-brand-line hover:border-brand-gold hover:text-brand-gold transition-colors flex items-center justify-center"
               >
                 <Instagram className="size-4" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/printbox-il"
                 aria-label="לינקדאין"
                 className="w-10 h-10 rounded-md border border-brand-line hover:border-brand-gold hover:text-brand-gold transition-colors flex items-center justify-center"
               >
@@ -69,26 +69,26 @@ export default function Footer() {
               <li className="flex items-start gap-2 justify-end flex-row-reverse">
                 <Mail className="size-4 mt-1 shrink-0 text-brand-gold" />
                 <a
-                  href="mailto:hello@printbox.co.il"
+                  href="mailto:info@print-box.store"
                   className="hover:text-brand-bone"
                   dir="ltr"
                 >
-                  hello@printbox.co.il
+                  info@print-box.store
                 </a>
               </li>
               <li className="flex items-start gap-2 justify-end flex-row-reverse">
                 <Phone className="size-4 mt-1 shrink-0 text-brand-gold" />
                 <a
-                  href="tel:+97231234567"
+                  href="tel:+972-3-722-8800"
                   className="hover:text-brand-bone"
                   dir="ltr"
                 >
-                  03-1234567
+                  03-722-8800
                 </a>
               </li>
               <li className="flex items-start gap-2 justify-end flex-row-reverse">
                 <MapPin className="size-4 mt-1 shrink-0 text-brand-gold" />
-                <span>רח&apos; היוצרים 12, תל אביב</span>
+                <span>רחוב היצירה 8, פתח תקווה</span>
               </li>
               <li className="text-sm text-brand-boneDim/80">
                 ימים א&apos;–ה&apos;, ‎09:00–18:00

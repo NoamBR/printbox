@@ -165,7 +165,7 @@ export default function QuoteForm() {
                       autoComplete="tel"
                       dir="ltr"
                       className={`${inputClass} text-start`}
-                      placeholder="050-1234567"
+                      placeholder="052-123-4567"
                       {...register("phone")}
                     />
                   </Field>
@@ -241,10 +241,10 @@ export default function QuoteForm() {
                       >
                         משהו השתבש. נסו שוב או שלחו לנו מייל ל-
                         <a
-                          href="mailto:hello@printbox.co.il"
+                          href="mailto:info@print-box.store"
                           className="underline font-semibold"
                         >
-                          hello@printbox.co.il
+                          info@print-box.store
                         </a>
                       </p>
                     )}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html><head><style>
+  body { margin: 0; padding: 0; background: transparent; }
+  .wrap { width: 800px; height: 240px; }
+</style></head><body>
+<div class="wrap">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="800" height="240">
+    <rect width="800" height="240" fill="#F4EFE3"/>
+    <rect x="40" y="48" width="720" height="144" fill="none" stroke="#590B00" stroke-width="2.5"/>
+    <defs>
+      <mask id="hebrewMask">
+        <rect width="800" height="240" fill="black"/>
+        <text x="400" y="166" font-family="'Heebo','Arial Hebrew','David',sans-serif" font-size="135" font-weight="900" fill="white" text-anchor="middle" direction="rtl" letter-spacing="6">לנדוור</text>
+      </mask>
+    </defs>
+    <g mask="url(#hebrewMask)">
+      <rect x="0" y="78"  width="800" height="9" fill="#590B00"/>
+      <rect x="0" y="98"  width="800" height="9" fill="#590B00"/>
+      <rect x="0" y="118" width="800" height="9" fill="#590B00"/>
+      <rect x="0" y="138" width="800" height="9" fill="#590B00"/>
+      <rect x="0" y="158" width="800" height="9" fill="#590B00"/>
+    </g>
+  </svg>
+</div>
+</body></html>
