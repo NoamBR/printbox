@@ -8,40 +8,52 @@ const CSV_PATH = path.join(
   "PrintBox-Pricing-Template.csv"
 );
 
-export type PriceTier = { qty: number; unitPriceIls: number };
-export type ProductPrices = { productId: string; tiers: PriceTier[] };
+type Range = { col: string; min: number; max: number };
 
-const TIER_QUANTITIES = [
-  500, 1000, 2500, 5000, 10000, 25000, 50000, 100000,
-] as const;
+const RANGES: Range[] = [
+  { col: "price_100_500", min: 100, max: 500 },
+  { col: "price_500_1000", min: 500, max: 1000 },
+  { col: "price_1000_5000", min: 1000, max: 5000 },
+  { col: "price_5000_10000", min: 5000, max: 10000 },
+  { col: "price_10000_25000", min: 10000, max: 25000 },
+  { col: "price_25000_50000", min: 25000, max: 50000 },
+  { col: "price_50000_100000", min: 50000, max: 100000 },
+  { col: "price_100000_plus", min: 100000, max: Infinity },
+];
 
-let _cache: Map<string, PriceTier[]> | null = null;
+type ProductRanges = Array<{ range: Range; unitPriceIls: number }>;
+
+let _cache: Map<string, ProductRanges> | null = null;
 let _cacheMtime = 0;
 
-function loadCsv(): Map<string, PriceTier[]> {
+function loadCsv(): Map<string, ProductRanges> {
   if (!fs.existsSync(CSV_PATH)) return new Map();
   const stat = fs.statSync(CSV_PATH);
   if (_cache && stat.mtimeMs === _cacheMtime) return _cache;
-  const raw = fs.readFileSync(CSV_PATH, "utf8");
-  const noBom = raw.replace(/^﻿/, "");
-  const parsed = Papa.parse<Record<string, string>>(noBom, {
+
+  const raw = fs.readFileSync(CSV_PATH, "utf8").replace(/^﻿/, "");
+  const parsed = Papa.parse<Record<string, string>>(raw, {
     header: true,
     skipEmptyLines: true,
     transformHeader: (h) => h.trim(),
   });
-  const map = new Map<string, PriceTier[]>();
+
+  const map = new Map<string, ProductRanges>();
   for (const row of parsed.data) {
     const id = (row.product_id ?? "").trim();
     if (!/^PB-\d{3}$/.test(id)) continue;
-    const tiers: PriceTier[] = [];
-    for (const qty of TIER_QUANTITIES) {
-      const cell = (row[`unit_price_at_${qty}`] ?? "").trim();
+    const filled: ProductRanges = [];
+    for (const range of RANGES) {
+      const cell = (row[range.col] ?? "").trim();
       if (!cell) continue;
       const num = Number(cell);
-      if (Number.isFinite(num) && num > 0) tiers.push({ qty, unitPriceIls: num });
+      if (Number.isFinite(num) && num > 0) {
+        filled.push({ range, unitPriceIls: num });
+      }
     }
-    if (tiers.length > 0) map.set(id, tiers);
+    if (filled.length > 0) map.set(id, filled);
   }
+
   _cache = map;
   _cacheMtime = stat.mtimeMs;
   return map;
@@ -49,21 +61,46 @@ function loadCsv(): Map<string, PriceTier[]> {
 
 /**
  * Returns suggested unit price (₪) for the given product and quantity.
- * Uses the tier matching the largest qty ≤ requested. Returns null if no data.
+ *
+ * Resolution:
+ *   1. Locate the range that contains the quantity (lower-inclusive,
+ *      upper-exclusive — so qty=5000 falls in the 5000-10000 range).
+ *   2. If that range has a filled cell → return its price.
+ *   3. Otherwise walk to the nearest filled neighbor — prefer the next
+ *      higher tier (cheaper, customer-friendly), else the next lower.
+ *   4. Return null if no cell is filled for the product.
  */
 export function suggestUnitPrice(
   productId: string,
   quantity: number
 ): number | null {
-  const map = loadCsv();
-  const tiers = map.get(productId);
-  if (!tiers || tiers.length === 0) return null;
-  const sorted = [...tiers].sort((a, b) => a.qty - b.qty);
-  let chosen: PriceTier | null = null;
-  for (const t of sorted) {
-    if (quantity >= t.qty) chosen = t;
+  const filled = loadCsv().get(productId);
+  if (!filled || filled.length === 0) return null;
+
+  const containingIdx = RANGES.findIndex(
+    (r) => quantity >= r.min && quantity < r.max
+  );
+
+  if (containingIdx >= 0) {
+    const exact = filled.find((f) => f.range.col === RANGES[containingIdx].col);
+    if (exact) return exact.unitPriceIls;
   }
-  return chosen ? chosen.unitPriceIls : sorted[0].unitPriceIls;
+
+  const target = containingIdx >= 0 ? containingIdx : RANGES.length - 1;
+  for (let offset = 1; offset < RANGES.length; offset++) {
+    const higher = target + offset;
+    if (higher < RANGES.length) {
+      const hit = filled.find((f) => f.range.col === RANGES[higher].col);
+      if (hit) return hit.unitPriceIls;
+    }
+    const lower = target - offset;
+    if (lower >= 0) {
+      const hit = filled.find((f) => f.range.col === RANGES[lower].col);
+      if (hit) return hit.unitPriceIls;
+    }
+  }
+
+  return null;
 }
 
 /**

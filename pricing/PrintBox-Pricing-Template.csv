@@ -1,4 +1,4 @@
-﻿product_id,product_he,product_en,moq,unit_price_at_500,unit_price_at_1000,unit_price_at_2500,unit_price_at_5000,unit_price_at_10000,unit_price_at_25000,unit_price_at_50000,unit_price_at_100000,notes
+﻿product_id,product_he,product_en,moq,price_100_500,price_500_1000,price_1000_5000,price_5000_10000,price_10000_25000,price_25000_50000,price_50000_100000,price_100000_plus,notes
 PB-001,קופסת המבורגר צדפה,Coated Paperboard Burger Clamshell,1000,,,,,,,,,
 PB-002,קופסת המבורגר קראפט,Corrugated Kraft Burger Box,500,,,,,,,,,
 PB-003,כוס משקה קר 16oz,16oz Paper Cold Cup,1000,,,,,,,,,

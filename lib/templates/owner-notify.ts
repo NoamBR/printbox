@@ -4,10 +4,12 @@ import { buildApproveUrl, buildRejectUrl, buildPanelUrl } from "../quotes";
 import { suggestLineTotal } from "../pricing";
 
 function ils(amount: number): string {
+  // Integers render as ₪3,000; sub-shekel unit prices render as ₪0.40
   return new Intl.NumberFormat("he-IL", {
     style: "currency",
     currency: "ILS",
-    maximumFractionDigits: 0,
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2,
   }).format(amount);
 }
 

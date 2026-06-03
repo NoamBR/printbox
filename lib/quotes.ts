@@ -7,6 +7,7 @@ import {
   ownerNotifyEmail,
   ownerSlackPayload,
 } from "./templates/owner-notify";
+import { clientConfirmationEmail } from "./templates/client-confirmation";
 
 const TOKEN_TTL_DAYS = 14;
 const FOLLOW_UP_BUSINESS_DAYS = 3;
@@ -312,6 +313,28 @@ export async function notifyOwner(
   }
 
   await Promise.allSettled(tasks);
+}
+
+export async function notifyCustomer(
+  quote: QuoteRow,
+  items: CartItem[]
+): Promise<void> {
+  const { subject, html, text } = clientConfirmationEmail(quote, items);
+  try {
+    await sendEmail({
+      to: quote.client_email,
+      subject,
+      body: text,
+      html,
+      dryrunLabel: `client-confirmation-${quote.public_id}`,
+    });
+    logQuoteEvent(quote.id, "customer_email_sent", {
+      clientEmail: quote.client_email,
+    });
+  } catch (err) {
+    console.error("[quotes] customer email failed:", err);
+    logQuoteEvent(quote.id, "customer_email_failed", { error: String(err) });
+  }
 }
 
 export function setOwnerDecision(

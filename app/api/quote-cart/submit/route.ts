@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { quoteSubmissionSchema } from "@/lib/quote-schema";
-import { createQuote, notifyOwner } from "@/lib/quotes";
+import { createQuote, notifyCustomer, notifyOwner } from "@/lib/quotes";
 
 export const runtime = "nodejs";
 
@@ -30,6 +30,9 @@ export async function POST(req: Request) {
     );
     notifyOwner(quote, items, { needsClarification }).catch((err) => {
       console.error("[quote-cart/submit] notifyOwner threw:", err);
+    });
+    notifyCustomer(quote, items).catch((err) => {
+      console.error("[quote-cart/submit] notifyCustomer threw:", err);
     });
     return NextResponse.json({ ok: true, publicId: quote.public_id });
   } catch (err) {
