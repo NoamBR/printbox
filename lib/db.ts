@@ -2,7 +2,11 @@ import Database from "better-sqlite3";
 import path from "node:path";
 import fs from "node:fs";
 
-const DATA_DIR = path.join(process.cwd(), "data");
+// On Vercel the project root is read-only; /tmp is the only writable dir
+// (ephemeral, per-function-instance — fine for fire-and-forget audit logging).
+const DATA_DIR = process.env.VERCEL
+  ? path.join("/tmp", "printbox-data")
+  : path.join(process.cwd(), "data");
 const DB_PATH = path.join(DATA_DIR, "printbox.db");
 
 let _db: Database.Database | null = null;
@@ -130,6 +134,36 @@ function migrate(db: Database.Database): void {
       created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
     CREATE INDEX IF NOT EXISTS idx_quote_events_quote ON quote_events(quote_id, created_at);
+
+    CREATE TABLE IF NOT EXISTS social_posts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      type TEXT NOT NULL,
+      angle TEXT NOT NULL,
+      brand_key TEXT NOT NULL,
+      brand_name TEXT NOT NULL,
+      product_id TEXT NOT NULL,
+      format TEXT NOT NULL,
+      style TEXT NOT NULL,
+      composition TEXT NOT NULL,
+      hook_hebrew TEXT NOT NULL,
+      caption_full TEXT,
+      hashtags_json TEXT,
+      alt_text TEXT,
+      value_positioning_beat TEXT,
+      image_path TEXT,
+      event_tie TEXT,
+      status TEXT NOT NULL DEFAULT 'queued',
+      error_msg TEXT,
+      scheduled_for_iso TEXT,
+      generated_at_iso TEXT,
+      notified_at_iso TEXT,
+      posted_at_iso TEXT,
+      metadata_json TEXT,
+      created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    );
+    CREATE INDEX IF NOT EXISTS idx_social_posts_status ON social_posts(status, created_at);
+    CREATE INDEX IF NOT EXISTS idx_social_posts_type ON social_posts(type, created_at);
+    CREATE INDEX IF NOT EXISTS idx_social_posts_brand_angle ON social_posts(brand_key, angle, created_at);
   `);
 }
 
@@ -272,3 +306,33 @@ export function logQuoteEvent(
     "INSERT INTO quote_events (quote_id, type, meta_json) VALUES (?, ?, ?)"
   ).run(quote_id, type, meta ? JSON.stringify(meta) : null);
 }
+
+export type SocialPostType = "story" | "post";
+export type SocialPostStatus = "queued" | "posted" | "skipped" | "error";
+
+export type SocialPostRow = {
+  id: number;
+  type: SocialPostType;
+  angle: string;
+  brand_key: string;
+  brand_name: string;
+  product_id: string;
+  format: string;
+  style: string;
+  composition: string;
+  hook_hebrew: string;
+  caption_full: string | null;
+  hashtags_json: string | null;
+  alt_text: string | null;
+  value_positioning_beat: string | null;
+  image_path: string | null;
+  event_tie: string | null;
+  status: SocialPostStatus;
+  error_msg: string | null;
+  scheduled_for_iso: string | null;
+  generated_at_iso: string | null;
+  notified_at_iso: string | null;
+  posted_at_iso: string | null;
+  metadata_json: string | null;
+  created_at: string;
+};

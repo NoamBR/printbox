@@ -22,10 +22,12 @@ app/panel/
 app/api/panel/
 components/panel/
 middleware.ts
-lib/db.ts
 lib/imap.ts
-lib/sender/
 lib/sequencer.ts
-lib/drafter.ts
 lib/classifier.ts
-lib/auth.ts
+
+# NOTE: lib/db.ts, lib/sender/, lib/drafter.ts, and lib/auth.ts ship to Vercel
+# because the public Quote Cart submit endpoint reuses them. On Vercel,
+# getDb() falls back to /tmp/printbox.db (ephemeral but fine for the
+# fire-and-forget owner notification). Panel routes that need persistent
+# storage are excluded above and only run locally.
